@@ -1,0 +1,51 @@
+{
+  "spider": {
+    "total_queries": 1034,
+    "databases": 20,
+    "question_length": {
+      "mean": 68.04835589941973,
+      "std": 22.708598525818317,
+      "median": 66.0,
+      "min": 18,
+      "max": 174
+    },
+    "sql_length": {
+      "mean": 106.69342359767892,
+      "std": 60.92110361641392,
+      "median": 89.0,
+      "min": 20,
+      "max": 422
+    },
+    "complexity": {
+      "avg_joins": 0.5009671179883946,
+      "avg_subqueries": 0.1595744680851064,
+      "avg_aggregations": 0.6711798839458414,
+      "group_by_pct": 26.789168278529978,
+      "order_by_pct": 22.920696324951646
+    }
+  },
+  "wikisql": {
+    "total_queries": 8421,
+    "unique_tables": 2630,
+    "question_length": {
+      "mean": 61.14440090250564,
+      "std": 24.06129213946748,
+      "median": 57.0,
+      "min": 16,
+      "max": 275
+    },
+    "sql_length": {
+      "mean": 32.004275026718915,
+      "std": 0.06524378028187469,
+      "median": 32.0,
+      "min": 32,
+      "max": 33
+    },
+    "complexity": {
+      "avg_aggregations": 0.0,
+      "group_by_pct": 0.0,
+      "order_by_pct": 0.0,
+      "where_pct": 100.0
+    }
+  }
+}

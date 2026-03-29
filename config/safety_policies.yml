@@ -1,0 +1,151 @@
+# SafeSQL Safety Policies Configuration
+# This file defines safety rules and policies for query generation
+
+# Forbidden Operations
+forbidden_operations:
+  # Destructive operations that should never be generated
+  - "DROP"
+  - "TRUNCATE"
+  - "DROP TABLE"
+  - "DROP DATABASE"
+  - "DROP SCHEMA"
+  - "DROP INDEX"
+  - "DROP VIEW"
+  - "DROP FUNCTION"
+  - "DROP PROCEDURE"
+
+# Conditional Restrictions
+conditional_restrictions:
+  # DELETE operations without WHERE clause
+  delete_without_where:
+    enabled: true
+    severity: "critical"  # critical, high, medium, low
+    action: "block"  # block, warn, allow
+    
+  # UPDATE operations without WHERE clause
+  update_without_where:
+    enabled: true
+    severity: "critical"
+    action: "block"
+    
+  # UPDATE operations affecting all rows
+  update_all_rows:
+    enabled: true
+    severity: "high"
+    action: "warn"  # Warn but allow if WHERE clause exists
+    
+  # DELETE operations affecting all rows
+  delete_all_rows:
+    enabled: true
+    severity: "critical"
+    action: "block"
+
+# Query Limits
+query_limits:
+  # Maximum number of rows to return
+  max_result_rows: 10000
+  
+  # Maximum query execution time (seconds)
+  max_execution_time: 300
+  
+  # Maximum query complexity (number of joins)
+  max_joins: 10
+  
+  # Maximum nested subquery depth
+  max_subquery_depth: 5
+
+# Allowed Operations
+allowed_operations:
+  # Safe operations that are always allowed
+  always_allowed:
+    - "SELECT"
+    - "EXPLAIN"
+    - "DESCRIBE"
+    - "SHOW"
+  
+  # Conditional operations (require WHERE clause)
+  conditional:
+    - "UPDATE"
+    - "DELETE"
+    - "INSERT"  # INSERT INTO ... SELECT requires careful validation
+
+# Schema Access Control
+schema_access:
+  # Tables that should never be accessed
+  forbidden_tables:
+    - "system_users"
+    - "password_hash"
+    - "api_keys"
+    - "sensitive_config"
+    
+  # Columns that should never be accessed
+  forbidden_columns:
+    - "password"
+    - "password_hash"
+    - "api_key"
+    - "secret"
+    - "token"
+    - "ssn"
+    - "credit_card"
+    
+  # Read-only tables (SELECT only)
+  read_only_tables:
+    - "audit_log"
+    - "transaction_history"
+
+# Pattern Matching Rules
+pattern_rules:
+  # Patterns that indicate unsafe queries
+  unsafe_patterns:
+    - pattern: "DELETE FROM \\w+$"  # DELETE without WHERE
+      severity: "critical"
+      action: "block"
+      
+    - pattern: "UPDATE \\w+ SET"  # UPDATE without WHERE (needs validation)
+      severity: "high"
+      action: "warn"
+      
+    - pattern: "DROP (TABLE|DATABASE|SCHEMA)"  # DROP operations
+      severity: "critical"
+      action: "block"
+      
+    - pattern: "TRUNCATE"  # TRUNCATE operations
+      severity: "critical"
+      action: "block"
+
+# Organizational Policies
+organizational:
+  # Custom policies can be added here
+  # Example: Department-specific restrictions
+  departments:
+    finance:
+      allowed_operations: ["SELECT"]
+      forbidden_tables: ["employee_salaries"]
+      
+    hr:
+      allowed_operations: ["SELECT", "UPDATE"]
+      forbidden_operations: ["DELETE", "DROP"]
+
+# Error Messages
+error_messages:
+  forbidden_operation: "Operation '{operation}' is not allowed by safety policy."
+  missing_where_clause: "DELETE/UPDATE operations require a WHERE clause for safety."
+  forbidden_table: "Access to table '{table}' is restricted by safety policy."
+  forbidden_column: "Access to column '{column}' is restricted by safety policy."
+  query_limit_exceeded: "Query exceeds maximum allowed limit: {limit_type} = {value}."
+  schema_validation_failed: "Query failed schema validation: {reason}."
+  constraint_violation: "Query violates database constraint: {constraint}."
+
+# Policy Enforcement Levels
+enforcement:
+  # Strict mode: Block all violations
+  strict_mode: true
+  
+  # Log all policy checks
+  log_all_checks: true
+  
+  # Report violations
+  report_violations: true
+  
+  # Allow override (for testing/debugging)
+  allow_override: false

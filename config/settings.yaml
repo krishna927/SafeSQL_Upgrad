@@ -1,0 +1,179 @@
+# SafeSQL Configuration Settings
+# This file contains all configurable parameters for the SafeSQL framework
+
+# Model Configurations
+models:
+  gpt4:
+    api_key: ${OPENAI_API_KEY}  # Load from environment variable
+    model: "gpt-4"
+    temperature: 0.0
+    max_tokens: 512
+    timeout: 60  # seconds
+    retry_attempts: 3
+    
+  llama:
+    model_path: "meta-llama/Llama-3-8b"
+    lora:
+      r: 16
+      alpha: 32
+      dropout: 0.1
+    training:
+      learning_rate: 2e-5
+      epochs: 5
+      batch_size: 8
+      gradient_accumulation_steps: 4
+      warmup_steps: 100
+    inference:
+      temperature: 0.0
+      max_tokens: 512
+
+# Dataset Paths
+datasets:
+  spider:
+    path: "data/datasets/spider"
+    train_file: "train_spider.json"
+    dev_file: "dev.json"
+    
+  bird:
+    path: "data/datasets/bird"
+    train_file: "train/train.json"
+    dev_file: "dev/dev.json"
+    
+  synql_spider:
+    huggingface_name: "semiotic/SynQL-Spider-Train"
+    
+  wikisql_value:
+    huggingface_name: "SALT-NLP/wikisql_VALUE"
+
+# Database Configuration
+database:
+  postgresql:
+    default_port: 5432
+    connection_pool_size: 5
+    
+  mysql:
+    default_port: 3306
+    connection_pool_size: 5
+    
+  sqlite:
+    default_path: "data/datasets/databases"
+
+# Guardrails Layer Configuration
+guardrails:
+  # Policy-aware constrained decoding
+  constrained_decoding:
+    enabled: true
+    strict_mode: true  # If true, blocks unsafe queries completely
+    
+  # Grammar-guided generation
+  grammar_guided:
+    enabled: true
+    grammar_file: "config/sql_grammar.lark"
+    
+  # Token filtering
+  token_filtering:
+    enabled: true
+    forbidden_tokens: ["DROP", "TRUNCATE"]
+    check_delete_without_where: true
+    check_update_without_where: true
+    
+  # Safety policies
+  safety_policies:
+    file: "config/safety_policies.yaml"
+    reload_on_change: false
+
+# Verification Layer Configuration
+verification:
+  # Schema validation
+  schema_validation:
+    enabled: true
+    check_table_existence: true
+    check_column_existence: true
+    check_data_types: true
+    strict_mode: true
+    
+  # Constraint checking
+  constraint_checking:
+    enabled: true
+    check_foreign_keys: true
+    check_not_null: true
+    check_unique: true
+    check_check_constraints: true
+    
+  # Semantic correctness
+  semantic_analysis:
+    enabled: true
+    check_intent_alignment: true
+    check_result_consistency: true
+    
+  # Auto-repair
+  auto_repair:
+    enabled: true
+    max_repair_attempts: 3
+    repair_timeout: 5  # seconds
+
+# Evaluation Configuration
+evaluation:
+  # Primary metrics
+  metrics:
+    - "EX"   # Execution Accuracy
+    - "EM"   # Exact-Set Match
+    - "SVP"  # Safety Violations Prevented
+    - "FPR"  # False Positive Rate
+    - "FNR"  # False Negative Rate
+    
+  # Secondary metrics
+  secondary_metrics:
+    - "SES"  # Semantic Equivalence Score
+    - "SDR"  # Schema Drift Robustness
+    - "LO"   # Latency Overhead
+    - "TC"   # Token Cost
+    - "ARSR" # Auto-Repair Success Rate
+    
+  # Statistical analysis
+  statistical:
+    significance_level: 0.05
+    confidence_interval: 0.95
+    effect_size_threshold: 0.2  # Cohen's d
+    
+  # Human evaluation
+  human_eval:
+    num_experts: 50
+    min_experts: 30  # Minimum acceptable
+    rating_scale: 5  # 1-5 scale
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "logs/safesql.log"
+  console: true
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  max_file_size_mb: 10
+  backup_count: 5
+
+# Experiment Tracking
+tracking:
+  wandb:
+    enabled: true
+    project: "safesql-research"
+    entity: null  # Set your wandb username/team
+    
+  mlflow:
+    enabled: true
+    tracking_uri: "file:./mlruns"
+    experiment_name: "safesql-experiments"
+
+# Performance Settings
+performance:
+  max_workers: 4  # For parallel processing
+  batch_size: 32  # For batch evaluation
+  cache_enabled: true
+  cache_ttl: 3600  # seconds
+
+# Paths
+paths:
+  data_dir: "data"
+  models_dir: "models"
+  logs_dir: "logs"
+  results_dir: "results"
+  checkpoints_dir: "checkpoints"

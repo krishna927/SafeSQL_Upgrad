@@ -1,0 +1,1241 @@
+{
+  "spider_model3": {
+    "model": "Model 3 (Baseline GPT-4)",
+    "dataset": "spider",
+    "n_samples": 20,
+    "queries": [
+      {
+        "question": "What are the codes of countries where Spanish is spoken by the largest percentage of people?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What are the descriptions for all the math courses?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What are the different addresses that have students living there?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "How many different results are there for the battles?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "Show countries where a singer above age 40 and a singer below 30 are from.",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "How many distinct countries do players come from?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What is the number of car models that are produced by each maker and what is the id and full name of each maker?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "How many distinct nationalities are there?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "Show the property type descriptions of properties belonging to that code.",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What are the minimum and maximum number of products across all the shops?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "How many singers do we have?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What are the id and names of the countries which have more than 3 car makers or produce the 'fiat' model?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What is the horsepower of the car with the greatest accelerate?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "For a volvo model, how many cylinders does the version with least accelerate have?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What is the number of cars with a greater accelerate than the one with the most horsepower?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "Which professionals have done at least two types of treatments? List the professional id and cell phone.",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What is the code of airport that has fewest number of flights?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What is the number of carsw ith over 6 cylinders?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What is the number of distinct continents where Chinese is spoken?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      },
+      {
+        "question": "What is the maximum capacity and the average of all stadiums ?",
+        "error": "name 'generated_sql' is not defined",
+        "status": "failed"
+      }
+    ],
+    "metrics": {
+      "execution_accuracy": 0.0,
+      "exact_match": 0.0,
+      "total": 20,
+      "successful": 0,
+      "failed": 20
+    }
+  },
+  "spider_model1": {
+    "model": "Model 1 (GPT-4 + SafeSQL)",
+    "dataset": "spider",
+    "n_samples": 20,
+    "queries": [
+      {
+        "question": "What are the codes of countries where Spanish is spoken by the largest percentage of people?",
+        "generated_sql": "SELECT \"country\".\"Code\"\nFROM \"country\"\nJOIN \"countrylanguage\" ON \"country\".\"Code\" = \"countrylanguage\".\"CountryCode\"\nWHERE \"countrylanguage\".\"Language\" = 'Spanish'\nORDER BY \"countrylanguage\".\"Percentage\" DESC\nLIMIT 1",
+        "gold_sql": "SELECT CountryCode ,  max(Percentage) FROM countrylanguage WHERE LANGUAGE  =  \"Spanish\" GROUP BY CountryCode",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"country\".\"Code\"\nFROM \"country\"\nJOIN \"countrylanguage\" ON \"country\".\"Code\" = \"countrylanguage\".\"CountryCode\"\nWHERE \"countrylanguage\".\"Language\" = 'Spanish'\nORDER BY \"countrylanguage\".\"Percentage\" DESC\nLIMIT 1",
+          "errors": [
+            "Column '\"country\".\"Code\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "ORDER BY column '\"countrylanguage\".\"Percentage\"' may be invalid"
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"country\".\"Code\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"country\".\"Code\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "ORDER BY column '\"countrylanguage\".\"Percentage\"' may be invalid"
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the descriptions for all the math courses?",
+        "generated_sql": "SELECT \"description\" FROM courses WHERE \"description\" LIKE '%math%'",
+        "gold_sql": "SELECT course_description FROM Courses WHERE course_name  =  'math'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"description\" FROM courses WHERE \"description\" LIKE '%math%'",
+          "errors": [
+            "Column '\"description\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"description\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "COURSES"
+                ],
+                "columns_found": [
+                  "\"description\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the different addresses that have students living there?",
+        "generated_sql": "SELECT DISTINCT \"addresses\".* \nFROM \"addresses\"\nJOIN \"students\" ON \"addresses\".\"id\" = \"students\".\"address_id\"",
+        "gold_sql": "SELECT count(DISTINCT current_address_id) FROM Students",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT DISTINCT \"addresses\".* \nFROM \"addresses\"\nJOIN \"students\" ON \"addresses\".\"id\" = \"students\".\"address_id\"",
+          "errors": [
+            "Column 'DISTINCT \"addresses\".*' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'DISTINCT \"addresses\".*' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "DISTINCT \"addresses\".*"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many different results are there for the battles?",
+        "generated_sql": "SELECT COUNT(DISTINCT \"result\") FROM battle",
+        "gold_sql": "SELECT count(DISTINCT RESULT) FROM battle",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(DISTINCT \"result\") FROM battle",
+          "errors": [
+            "Column 'DISTINCT \"result' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'DISTINCT \"result' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "BATTLE"
+                ],
+                "columns_found": [
+                  "DISTINCT \"result"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Show countries where a singer above age 40 and a singer below 30 are from.",
+        "generated_sql": "SELECT DISTINCT Country \nFROM \"singer\" \nWHERE Age > 40 OR Age < 30",
+        "gold_sql": "SELECT country FROM singer WHERE age  >  40 INTERSECT SELECT country FROM singer WHERE age  <  30",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT DISTINCT Country \nFROM \"singer\" \nWHERE Age > 40 OR Age < 30",
+          "errors": [
+            "Column 'Age' not found in schema. Available columns: []...",
+            "Column 'DISTINCT Country' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'DISTINCT Country' not found in schema. Available columns: []...",
+                "Column 'Age' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "DISTINCT Country",
+                  "Age"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many distinct countries do players come from?",
+        "generated_sql": "SELECT COUNT(DISTINCT \"country\") FROM players",
+        "gold_sql": "SELECT count(DISTINCT country_code) FROM players",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(DISTINCT \"country\") FROM players",
+          "errors": [
+            "Column 'DISTINCT \"country' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'DISTINCT \"country' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "PLAYERS"
+                ],
+                "columns_found": [
+                  "DISTINCT \"country"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the number of car models that are produced by each maker and what is the id and full name of each maker?",
+        "generated_sql": "SELECT \"car makers\".\"id\", \"car makers\".\"full name\", COUNT(\"model list\".\"id\") AS \"number_of_models\"\nFROM \"car makers\"\nJOIN \"model list\" ON \"car makers\".\"id\" = \"model list\".\"maker_id\"\nGROUP BY \"car makers\".\"id\", \"car makers\".\"full name\"",
+        "gold_sql": "SELECT Count(*) ,  T2.FullName ,  T2.id FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id GROUP BY T2.id;",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"car makers\".\"id\", \"car makers\".\"full name\", COUNT(\"model list\".\"id\") AS \"number_of_models\"\nFROM \"car makers\"\nJOIN \"model list\" ON \"car makers\".\"id\" = \"model list\".\"maker_id\"\nGROUP BY \"car makers\".\"id\", \"car makers\".\"full name\"",
+          "errors": [
+            "Column 'AS \"number_of_models\"' not found in schema. Available columns: []...",
+            "Column '\"car makers\".\"id\"' not found in schema. Available columns: []...",
+            "Column '\"car makers\".\"full name\"' not found in schema. Available columns: []...",
+            "Column 'model list\".\"id' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'AS \"number_of_models\"' not found in schema. Available columns: []...",
+                "Column '\"car makers\".\"id\"' not found in schema. Available columns: []...",
+                "Column '\"car makers\".\"full name\"' not found in schema. Available columns: []...",
+                "Column 'model list\".\"id' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "AS \"number_of_models\"",
+                  "\"car makers\".\"id\"",
+                  "\"car makers\".\"full name\"",
+                  "model list\".\"id"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many distinct nationalities are there?",
+        "generated_sql": "SELECT COUNT(DISTINCT Nationality) FROM \"poker player\"",
+        "gold_sql": "SELECT count(DISTINCT Nationality) FROM people",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(DISTINCT Nationality) FROM \"poker player\"",
+          "errors": [
+            "Column 'DISTINCT Nationality' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'DISTINCT Nationality' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "DISTINCT Nationality"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Show the property type descriptions of properties belonging to that code.",
+        "generated_sql": "SELECT \"reference property types\".\"description\"\nFROM \"properties\"\nJOIN \"reference property types\" ON \"properties\".\"property_type_id\" = \"reference property types\".\"id\"\nWHERE \"properties\".\"code\" = 'that code'",
+        "gold_sql": "SELECT T2.property_type_description FROM Properties AS T1 JOIN Ref_Property_Types AS T2 ON T1.property_type_code  =  T2.property_type_code GROUP BY T1.property_type_code",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"reference property types\".\"description\"\nFROM \"properties\"\nJOIN \"reference property types\" ON \"properties\".\"property_type_id\" = \"reference property types\".\"id\"\nWHERE \"properties\".\"code\" = 'that code'",
+          "errors": [
+            "Column '\"reference property types\".\"description\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"reference property types\".\"description\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"reference property types\".\"description\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the minimum and maximum number of products across all the shops?",
+        "generated_sql": "SELECT MIN(\"number_of_products\") AS min_products, MAX(\"number_of_products\") AS max_products FROM shop",
+        "gold_sql": "SELECT min(Number_products) ,  max(Number_products) FROM shop",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT MIN(\"number_of_products\") AS min_products, MAX(\"number_of_products\") AS max_products FROM shop",
+          "errors": [
+            "Column 'AS max_products' not found in schema. Available columns: []...",
+            "Column 'AS min_products' not found in schema. Available columns: []...",
+            "Column 'number_of_products' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "Aggregation function used with non-aggregated columns. Consider using GROUP BY."
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'AS min_products' not found in schema. Available columns: []...",
+                "Column 'AS max_products' not found in schema. Available columns: []...",
+                "Column 'number_of_products' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "SHOP"
+                ],
+                "columns_found": [
+                  "AS min_products",
+                  "AS max_products",
+                  "number_of_products"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "Aggregation function used with non-aggregated columns. Consider using GROUP BY."
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many singers do we have?",
+        "generated_sql": "SELECT COUNT(*) FROM singer",
+        "gold_sql": "SELECT count(*) FROM singer",
+        "execution_accuracy": 1.0,
+        "exact_match": 1.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(*) FROM singer",
+          "errors": [
+            "Column '*' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '*' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "SINGER"
+                ],
+                "columns_found": [
+                  "*"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the id and names of the countries which have more than 3 car makers or produce the 'fiat' model?",
+        "generated_sql": "SELECT \"countries\".\"id\", \"countries\".\"name\"\nFROM \"countries\"\nJOIN \"car makers\" ON \"countries\".\"id\" = \"car makers\".\"country_id\"\nGROUP BY \"countries\".\"id\", \"countries\".\"name\"\nHAVING COUNT(\"car makers\".\"id\") > 3\n\nUNION\n\nSELECT \"countries\".\"id\", \"countries\".\"name\"\nFROM \"countries\"\nJOIN \"car makers\" ON \"countries\".\"id\" = \"car makers\".\"country_id\"\nJOIN \"model list\" ON \"car makers\".\"id\" = \"model list\".\"maker_id\"\nWHERE \"model list\".\"model_name\" = 'fiat';",
+        "gold_sql": "SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country GROUP BY T1.countryId HAVING count(*)  >  3 UNION SELECT T1.countryId ,  T1.CountryName FROM Countries AS T1 JOIN CAR_MAKERS AS T2 ON T1.CountryId  =  T2.Country JOIN MODEL_LIST AS T3 ON T2.Id  =  T3.Maker WHERE T3.Model  =  'fiat';",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"countries\".\"id\", \"countries\".\"name\"\nFROM \"countries\"\nJOIN \"car makers\" ON \"countries\".\"id\" = \"car makers\".\"country_id\"\nGROUP BY \"countries\".\"id\", \"countries\".\"name\"\nHAVING COUNT(\"car makers\".\"id\") > 3\n\nUNION\n\nSELECT \"countries\".\"id\", \"countries\".\"name\"\nFROM \"countries\"\nJOIN \"car makers\" ON \"countries\".\"id\" = \"car makers\".\"country_id\"\nJOIN \"model list\" ON \"car makers\".\"id\" = \"model list\".\"maker_id\"\nWHERE \"model list\".\"model_name\" = 'fiat';",
+          "errors": [
+            "Column '\"countries\".\"id\"' not found in schema. Available columns: []...",
+            "Column '\"countries\".\"name\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"countries\".\"name\"' not found in schema. Available columns: []...",
+                "Column '\"countries\".\"id\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"countries\".\"name\"",
+                  "\"countries\".\"id\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the horsepower of the car with the greatest accelerate?",
+        "generated_sql": "SELECT \"cars data\".\"horsepower\" \nFROM \"cars data\" \nORDER BY \"cars data\".\"accelerate\" DESC \nLIMIT 1",
+        "gold_sql": "SELECT T1.horsepower FROM CARS_DATA AS T1 ORDER BY T1.accelerate DESC LIMIT 1;",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"cars data\".\"horsepower\" \nFROM \"cars data\" \nORDER BY \"cars data\".\"accelerate\" DESC \nLIMIT 1",
+          "errors": [
+            "Column '\"cars data\".\"horsepower\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "ORDER BY column '\"cars' may be invalid"
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"cars data\".\"horsepower\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"cars data\".\"horsepower\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "ORDER BY column '\"cars' may be invalid"
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "For a volvo model, how many cylinders does the version with least accelerate have?",
+        "generated_sql": "SELECT \"cars data\".\"cylinders\"\nFROM \"car makers\"\nJOIN \"model list\" ON \"car makers\".\"id\" = \"model list\".\"maker_id\"\nJOIN \"car names\" ON \"model list\".\"id\" = \"car names\".\"model_id\"\nJOIN \"cars data\" ON \"car names\".\"id\" = \"cars data\".\"car_name_id\"\nWHERE \"car makers\".\"name\" = 'Volvo'\nORDER BY \"cars data\".\"accelerate\" ASC\nLIMIT 1",
+        "gold_sql": "SELECT T1.cylinders FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T2.Model  =  'volvo' ORDER BY T1.accelerate ASC LIMIT 1;",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"cars data\".\"cylinders\"\nFROM \"car makers\"\nJOIN \"model list\" ON \"car makers\".\"id\" = \"model list\".\"maker_id\"\nJOIN \"car names\" ON \"model list\".\"id\" = \"car names\".\"model_id\"\nJOIN \"cars data\" ON \"car names\".\"id\" = \"cars data\".\"car_name_id\"\nWHERE \"car makers\".\"name\" = 'Volvo'\nORDER BY \"cars data\".\"accelerate\" ASC\nLIMIT 1",
+          "errors": [
+            "Column '\"cars data\".\"cylinders\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "ORDER BY column '\"cars' may be invalid"
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"cars data\".\"cylinders\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"cars data\".\"cylinders\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "ORDER BY column '\"cars' may be invalid"
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the number of cars with a greater accelerate than the one with the most horsepower?",
+        "generated_sql": "SELECT COUNT(*) \nFROM \"cars data\" \nWHERE \"accelerate\" > (\n    SELECT MAX(\"accelerate\") \n    FROM \"cars data\" \n    WHERE \"horsepower\" = (\n        SELECT MAX(\"horsepower\") \n        FROM \"cars data\"\n    )\n)",
+        "gold_sql": "SELECT COUNT(*) FROM CARS_DATA WHERE Accelerate  >  ( SELECT Accelerate FROM CARS_DATA ORDER BY Horsepower DESC LIMIT 1 );",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(*) \nFROM \"cars data\" \nWHERE \"accelerate\" > (\n    SELECT MAX(\"accelerate\") \n    FROM \"cars data\" \n    WHERE \"horsepower\" = (\n        SELECT MAX(\"horsepower\") \n        FROM \"cars data\"\n    )\n)",
+          "errors": [
+            "Column '*' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '*' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "*"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Which professionals have done at least two types of treatments? List the professional id and cell phone.",
+        "generated_sql": "SELECT \"professionals\".\"id\", \"professionals\".\"cell_phone\"\nFROM \"professionals\"\nJOIN \"treatments\" ON \"professionals\".\"id\" = \"treatments\".\"professional_id\"\nGROUP BY \"professionals\".\"id\", \"professionals\".\"cell_phone\"\nHAVING COUNT(DISTINCT \"treatments\".\"treatment_type_id\") >= 2",
+        "gold_sql": "SELECT T1.professional_id ,  T1.cell_number FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id  =  T2.professional_id GROUP BY T1.professional_id HAVING count(*)  >=  2",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"professionals\".\"id\", \"professionals\".\"cell_phone\"\nFROM \"professionals\"\nJOIN \"treatments\" ON \"professionals\".\"id\" = \"treatments\".\"professional_id\"\nGROUP BY \"professionals\".\"id\", \"professionals\".\"cell_phone\"\nHAVING COUNT(DISTINCT \"treatments\".\"treatment_type_id\") >= 2",
+          "errors": [
+            "Column '\"professionals\".\"id\"' not found in schema. Available columns: []...",
+            "Column '\"professionals\".\"cell_phone\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"professionals\".\"cell_phone\"' not found in schema. Available columns: []...",
+                "Column '\"professionals\".\"id\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"professionals\".\"cell_phone\"",
+                  "\"professionals\".\"id\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the code of airport that has fewest number of flights?",
+        "generated_sql": "SELECT \"airport_code\" FROM airports AS a \nJOIN flights AS f ON a.\"airport_code\" = f.\"dest_airport\" \nGROUP BY a.\"airport_code\" \nORDER BY COUNT(f.\"flight_id\") ASC \nLIMIT 1",
+        "gold_sql": "SELECT T1.AirportCode FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport OR T1.AirportCode  =  T2.SourceAirport GROUP BY T1.AirportCode ORDER BY count(*) LIMIT 1",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"airport_code\" FROM airports AS a \nJOIN flights AS f ON a.\"airport_code\" = f.\"dest_airport\" \nGROUP BY a.\"airport_code\" \nORDER BY COUNT(f.\"flight_id\") ASC \nLIMIT 1",
+          "errors": [
+            "Column '\"airport_code\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "ORDER BY column 'COUNT(f.\"flight_id\")' may be invalid"
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"airport_code\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "AIRPORTS",
+                  "FLIGHTS"
+                ],
+                "columns_found": [
+                  "\"airport_code\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "ORDER BY column 'COUNT(f.\"flight_id\")' may be invalid"
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the number of carsw ith over 6 cylinders?",
+        "generated_sql": "SELECT COUNT(*) FROM \"cars data\" WHERE \"cylinders\" > 6",
+        "gold_sql": "SELECT COUNT(*) FROM CARS_DATA WHERE Cylinders  >  6;",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(*) FROM \"cars data\" WHERE \"cylinders\" > 6",
+          "errors": [
+            "Column '*' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '*' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "*"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the number of distinct continents where Chinese is spoken?",
+        "generated_sql": "SELECT COUNT(DISTINCT \"country\".\"Continent\") \nFROM \"countrylanguage\" \nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\" \nWHERE \"countrylanguage\".\"Language\" = 'Chinese'",
+        "gold_sql": "SELECT COUNT( DISTINCT Continent) FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"Chinese\"",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(DISTINCT \"country\".\"Continent\") \nFROM \"countrylanguage\" \nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\" \nWHERE \"countrylanguage\".\"Language\" = 'Chinese'",
+          "errors": [
+            "Column 'DISTINCT \"country\".\"Continent' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'DISTINCT \"country\".\"Continent' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "DISTINCT \"country\".\"Continent"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the maximum capacity and the average of all stadiums ?",
+        "generated_sql": "SELECT MAX(Capacity) AS \"Maximum Capacity\", AVG(Capacity) AS \"Average Capacity\" FROM stadium",
+        "gold_sql": "select max(capacity), average from stadium",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT MAX(Capacity) AS \"Maximum Capacity\", AVG(Capacity) AS \"Average Capacity\" FROM stadium",
+          "errors": [
+            "Column 'AS \"Average Capacity\"' not found in schema. Available columns: []...",
+            "Column 'AS \"Maximum Capacity\"' not found in schema. Available columns: []...",
+            "Column 'Capacity' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "Aggregation function used with non-aggregated columns. Consider using GROUP BY."
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'AS \"Average Capacity\"' not found in schema. Available columns: []...",
+                "Column 'AS \"Maximum Capacity\"' not found in schema. Available columns: []...",
+                "Column 'Capacity' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "STADIUM"
+                ],
+                "columns_found": [
+                  "AS \"Average Capacity\"",
+                  "AS \"Maximum Capacity\"",
+                  "Capacity"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "Aggregation function used with non-aggregated columns. Consider using GROUP BY."
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      }
+    ],
+    "metrics": {
+      "execution_accuracy": 0.15,
+      "exact_match": 0.05,
+      "safety_violations_prevented": 0,
+      "auto_repair_success": 20,
+      "total": 20,
+      "successful": 20,
+      "failed": 0
+    }
+  }
+}

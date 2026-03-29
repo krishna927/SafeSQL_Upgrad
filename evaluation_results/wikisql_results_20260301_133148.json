@@ -1,0 +1,3037 @@
+{
+  "wikisql_model3": {
+    "model": "Model 3 (Baseline GPT-4)",
+    "dataset": "wikisql",
+    "n_samples": 50,
+    "queries": [
+      {
+        "question": "What position does the player who played for butler cc (ks) play?",
+        "generated_sql": "SELECT \"col3\" FROM table_1_10015132_11 WHERE \"col5\" = 'butler cc (ks)'",
+        "gold_sql": "SELECT col3 FROM table_1_10015132_11 WHERE col5 = 'Butler CC (KS)'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "How many schools did player number 3 play at?",
+        "generated_sql": "SELECT COUNT(\"col5\") FROM table_1_10015132_11 WHERE \"col1\" = 3",
+        "gold_sql": "SELECT COUNT(col5) FROM table_1_10015132_11 WHERE col1 = '3'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What school did player number 21 play for?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10015132_11 WHERE \"col1\" = 21",
+        "gold_sql": "SELECT col5 FROM table_1_10015132_11 WHERE col1 = '21'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Who is the player that wears number 42?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10015132_11 WHERE \"col1\" = '42'",
+        "gold_sql": "SELECT col0 FROM table_1_10015132_11 WHERE col1 = '42'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What player played guard for toronto in 1996-97?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10015132_11 WHERE \"col3\" = 'Guard' AND \"col4\" = '1996-97'",
+        "gold_sql": "SELECT col0 FROM table_1_10015132_11 WHERE col3 = 'Guard' AND col4 = '1996-97'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Who are all of the players on the Westchester High School club team?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10015132_9 WHERE \"col5\" = 'Westchester High School'",
+        "gold_sql": "SELECT col0 FROM table_1_10015132_9 WHERE col5 = 'Westchester High School'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What school/club team is Amir Johnson on?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10015132_9 WHERE \"col0\" = 'Amir Johnson'",
+        "gold_sql": "SELECT col5 FROM table_1_10015132_9 WHERE col0 = 'Amir Johnson'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What are the total amount of numbers on the Toronto team in 2005-06?",
+        "generated_sql": "SELECT COUNT(col1) FROM table_1_10015132_9 WHERE col4 = '2005-06'",
+        "gold_sql": "SELECT COUNT(col1) FROM table_1_10015132_9 WHERE col4 = '2005-06'",
+        "execution_accuracy": 1.0,
+        "exact_match": 1.0,
+        "status": "success"
+      },
+      {
+        "question": "What are the total number of positions on the Toronto team in 2006-07?",
+        "generated_sql": "SELECT COUNT(DISTINCT col3) FROM table_1_10015132_9 WHERE col4 = '2006-07'",
+        "gold_sql": "SELECT COUNT(col3) FROM table_1_10015132_9 WHERE col4 = '2006-07'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What are the nationality of the players on the Fresno State school/club team?",
+        "generated_sql": "SELECT \"col2\" FROM \"table_1_10015132_9\" WHERE \"col5\" = 'Fresno State'",
+        "gold_sql": "SELECT col2 FROM table_1_10015132_9 WHERE col5 = 'Fresno State'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What school/club team is Trey Johnson on?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10015132_9 WHERE \"col0\" = 'Trey Johnson'",
+        "gold_sql": "SELECT col5 FROM table_1_10015132_9 WHERE col0 = 'Trey Johnson'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "When did Jacques Chirac stop being a G8 leader?",
+        "generated_sql": "SELECT \"col2\" FROM table_1_10026563_1 WHERE \"col3\" = 'Jacques Chirac'",
+        "gold_sql": "SELECT col2 FROM table_1_10026563_1 WHERE col3 = 'Jacques Chirac'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "When did the Prime Minister of Italy take office?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10026563_1 WHERE \"col4\" = 'Prime Minister of Italy'",
+        "gold_sql": "SELECT col0 FROM table_1_10026563_1 WHERE col4 = 'Prime Minister of Italy'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the English name of the country whose official native language is Dutch Papiamento?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_1008653_1 WHERE \"col4\" = 'Dutch Papiamento'",
+        "gold_sql": "SELECT col0 FROM table_1_1008653_1 WHERE col4 = 'Dutch Papiamento'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What official or native languages are spoken in the country whose capital city is Canberra?",
+        "generated_sql": "SELECT \"col4\" FROM table_1_1008653_1 WHERE \"col1\" = 'Canberra'",
+        "gold_sql": "SELECT col4 FROM table_1_1008653_1 WHERE col1 = 'Canberra'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the local name given to the city of Canberra?",
+        "generated_sql": "SELECT \"col3\" FROM table_1_1008653_1 WHERE \"col1\" = 'Canberra'",
+        "gold_sql": "SELECT col3 FROM table_1_1008653_1 WHERE col1 = 'Canberra'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the local name given to the capital of Anguilla?",
+        "generated_sql": "SELECT \"col3\" FROM table_1_1008653_1 WHERE \"col0\" = 'Anguilla'",
+        "gold_sql": "SELECT col3 FROM table_1_1008653_1 WHERE col2 = 'Anguilla'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the English name given to the city of St. John's?",
+        "generated_sql": "SELECT \"col1\" FROM table_1_1008653_1 WHERE \"col3\" = 'St. John''s'",
+        "gold_sql": "SELECT col1 FROM table_1_1008653_1 WHERE col3 = 'St. John''s'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "How many capital cities does Australia have?",
+        "generated_sql": "SELECT COUNT(\"col1\") FROM table_1_1008653_1 WHERE \"col0\" = 'Australia'",
+        "gold_sql": "SELECT COUNT(col3) FROM table_1_1008653_1 WHERE col2 = 'Australia'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "The episode with production code 9abx02 was originally aired on what date?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10088101_1 WHERE \"col6\" = '9abx02'",
+        "gold_sql": "SELECT col5 FROM table_1_10088101_1 WHERE col6 = '9ABX02'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the episode number that has production code 8abx15?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10088101_1 WHERE \"col6\" = '8abx15'",
+        "gold_sql": "SELECT MIN(col1) FROM table_1_10088101_1 WHERE col6 = '8ABX15'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Name the minimum tiesplayed for 6 years",
+        "generated_sql": "SELECT MIN(\"col5\") FROM table_1_10295819_2 WHERE \"col4\" = 6",
+        "gold_sql": "SELECT MIN(col5) FROM table_1_10295819_2 WHERE col4 = 6",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the amount of trees, that require replacement when prevailing types, % is pine — 29.37 poplar — 26.12 acer negundo — 13.2?",
+        "generated_sql": "SELECT \"col4\" FROM table_1_10342194_3 WHERE \"col2\" = 'pine — 29.37 poplar — 26.12 acer negundo — 13.2'",
+        "gold_sql": "SELECT col4 FROM table_1_10342194_3 WHERE col2 = 'Pine — 29.37 Poplar — 26.12 Acer negundo — 13.2'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the amount of trees, that require replacement when district is leninsky?",
+        "generated_sql": "SELECT \"col4\" FROM table_1_10342194_3 WHERE \"col0\" = 'leninsky'",
+        "gold_sql": "SELECT col4 FROM table_1_10342194_3 WHERE col0 = 'Leninsky'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the district when the total amount of trees is smaller than 150817.6878461314 and amount of old trees is 1,928 (1.89%)?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10342194_3 WHERE \"col1\" < 150817.6878461314 AND \"col3\" = '1,928 (1.89%)'",
+        "gold_sql": "SELECT col0 FROM table_1_10342194_3 WHERE col1 < 150817.6878461314 AND col3 = '1,928 (1.89%)'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the amount of trees, that require replacement when the district is motovilikhinsky?",
+        "generated_sql": "SELECT \"col4\" FROM table_1_10342194_3 WHERE \"col0\" = 'motovilikhinsky'",
+        "gold_sql": "SELECT col4 FROM table_1_10342194_3 WHERE col0 = 'Motovilikhinsky'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the total amount of trees when district is leninsky?",
+        "generated_sql": "SELECT \"col1\" FROM table_1_10342194_3 WHERE \"col0\" = 'leninsky'",
+        "gold_sql": "SELECT MAX(col1) FROM table_1_10342194_3 WHERE col0 = 'Leninsky'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the district when prevailing types, % is acer negundo — 30.22 tilia — 18.6 poplar — 15.23?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10342194_3 WHERE \"col2\" = 'acer negundo — 30.22 tilia — 18.6 poplar — 15.23'",
+        "gold_sql": "SELECT col0 FROM table_1_10342194_3 WHERE col2 = 'Acer negundo — 30.22 Tilia — 18.6 Poplar — 15.23'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "When the value of \"since beginning of big 12\" is synonymous with its' category, what are the in Ames values?",
+        "generated_sql": "SELECT \"col2\" FROM table_1_10429820_13 WHERE \"col8\" = 'Since Beginning of Big 12'",
+        "gold_sql": "SELECT col2 FROM table_1_10429820_13 WHERE col8 = 'Since Beginning of Big 12'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "what's the u.s. open cup status for regular season of 4th, atlantic division ",
+        "generated_sql": "SELECT \"col5\" FROM table_1_1046170_5 WHERE \"col3\" = '4th' AND \"col1\" = 'Atlantic'",
+        "gold_sql": "SELECT col5 FROM table_1_1046170_5 WHERE col3 = '4th, Atlantic Division'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "how many division  did not qualify for u.s. open cup in 2003",
+        "generated_sql": "SELECT COUNT(\"col1\") FROM table_1_1046170_5 WHERE \"col0\" = 2003 AND \"col5\" = 'Did not qualify'",
+        "gold_sql": "SELECT col1 FROM table_1_1046170_5 WHERE col5 = 'Did Not Qualify' AND col0 = 2003",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "which round is u.s. open cup division semifinals",
+        "generated_sql": "SELECT \"col5\" FROM \"table_1_1046170_5\" WHERE \"col4\" = 'Semifinals'",
+        "gold_sql": "SELECT col5 FROM table_1_1046170_5 WHERE col4 = 'Division Semifinals'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "what are all the playoffs for regular season is 1st, atlantic division",
+        "generated_sql": "SELECT \"col4\" FROM table_1_1046170_5 WHERE \"col3\" = '1st' AND \"col1\" = 'Atlantic'",
+        "gold_sql": "SELECT col4 FROM table_1_1046170_5 WHERE col3 = '1st, Atlantic Division'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "what are all the playoffs for u.s. open cup in 1st round",
+        "generated_sql": "SELECT \"col4\" FROM table_1_1046170_5 WHERE \"col5\" = '1st round'",
+        "gold_sql": "SELECT col4 FROM table_1_1046170_5 WHERE col5 = '1st Round'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "what is the total number of 2nd leg where aggregate is 7-2",
+        "generated_sql": "SELECT COUNT(\"col5\") FROM table_1_1061075_1 WHERE \"col6\" = '7-2'",
+        "gold_sql": "SELECT COUNT(col5) FROM table_1_1061075_1 WHERE col6 = '7-2'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": " what's the aggregate where 1st leg is 3–2",
+        "generated_sql": "SELECT \"col6\" FROM table_1_1061075_1 WHERE \"col4\" = '3–2'",
+        "gold_sql": "SELECT col6 FROM table_1_1061075_1 WHERE col4 = '3–2'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": " what's the competition where aggregate is 4–7",
+        "generated_sql": "SELECT \"col1\" FROM table_1_1061075_1 WHERE \"col6\" = '4–7'",
+        "gold_sql": "SELECT col1 FROM table_1_1061075_1 WHERE col6 = '4–7'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": " what's the competition where 1st leg is 4-1 (h)",
+        "generated_sql": "SELECT \"col1\" FROM table_1_1061075_1 WHERE \"col4\" = '4-1 (h)'",
+        "gold_sql": "SELECT col1 FROM table_1_1061075_1 WHERE col4 = '4-1 (h)'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "what is the total number of round where opponents is haugar",
+        "generated_sql": "SELECT COUNT(\"col2\") FROM table_1_1061075_1 WHERE \"col3\" = 'haugar'",
+        "gold_sql": "SELECT COUNT(col2) FROM table_1_1061075_1 WHERE col3 = 'Haugar'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": " what's the 1st leg where opponents is galatasaray",
+        "generated_sql": "SELECT \"col4\" FROM table_1_1061075_1 WHERE \"col3\" = 'galatasaray'",
+        "gold_sql": "SELECT col4 FROM table_1_1061075_1 WHERE col3 = 'Galatasaray'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the highest Rd that Tom Sneva had the pole position in?",
+        "generated_sql": "SELECT MAX(\"col0\") FROM table_1_10706961_2 WHERE \"col1\" = 'Tom Sneva' AND \"col2\" = '1'",
+        "gold_sql": "SELECT MAX(col0) FROM table_1_10706961_2 WHERE col2 = 'Tom Sneva'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "How many winning drivers were there in the race that had a fastest lap time of 56.920?",
+        "generated_sql": "SELECT COUNT(\"col4\") FROM table_1_10706961_2 WHERE \"col3\" = '56.920'",
+        "gold_sql": "SELECT COUNT(col4) FROM table_1_10706961_2 WHERE col3 = '56.920'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "How many reports are there in the race that Forsythe Racing won and Teo Fabi had the pole position in?",
+        "generated_sql": "SELECT COUNT(\"col6\") FROM table_1_10706961_2 WHERE \"col5\" = 'Forsythe Racing' AND \"col2\" = 'Teo Fabi'",
+        "gold_sql": "SELECT COUNT(col6) FROM table_1_10706961_2 WHERE col5 = 'Forsythe Racing' AND col2 = 'Teo Fabi'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Which Rd took place at the Indianapolis 500?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10706961_2 WHERE \"col1\" = 'Indianapolis 500'",
+        "gold_sql": "SELECT col0 FROM table_1_10706961_2 WHERE col1 = 'Indianapolis 500'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Which teams won when Bobby Rahal was their winning driver?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10706961_2 WHERE \"col4\" = 'Bobby Rahal'",
+        "gold_sql": "SELECT col5 FROM table_1_10706961_2 WHERE col4 = 'Bobby Rahal'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What was the fastest lap time in the Escort Radar Warning 200?",
+        "generated_sql": "SELECT \"col3\" FROM table_1_10706961_2 WHERE \"col1\" = 'Escort Radar Warning 200'",
+        "gold_sql": "SELECT col3 FROM table_1_10706961_2 WHERE col1 = 'Escort Radar Warning 200'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What report was there for the porsche north america?",
+        "generated_sql": "SELECT \"col8\" FROM table_1_10707176_2 WHERE \"col7\" = 'porsche north america'",
+        "gold_sql": "SELECT col8 FROM table_1_10707176_2 WHERE col7 = 'Porsche North America'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What rnds were there for the phoenix international raceway?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10707176_2 WHERE \"col2\" = 'Phoenix International Raceway'",
+        "gold_sql": "SELECT col0 FROM table_1_10707176_2 WHERE col2 = 'Phoenix International Raceway'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Who was the pole position for the rnd equalling 12?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10707176_2 WHERE \"col0\" = 12",
+        "gold_sql": "SELECT col5 FROM table_1_10707176_2 WHERE col0 = '12'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "How many reports were the for the cleveland burke lakefront airport circut?",
+        "generated_sql": "SELECT COUNT(\"col8\") FROM table_1_10707176_2 WHERE \"col2\" = 'Cleveland Burke Lakefront Airport'",
+        "gold_sql": "SELECT COUNT(col8) FROM table_1_10707176_2 WHERE col2 = 'Cleveland Burke Lakefront Airport'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      }
+    ],
+    "metrics": {
+      "execution_accuracy": 0.74,
+      "exact_match": 0.02,
+      "total": 50,
+      "successful": 50,
+      "failed": 0
+    }
+  },
+  "wikisql_model1": {
+    "model": "Model 1 (GPT-4 + SafeSQL)",
+    "dataset": "wikisql",
+    "n_samples": 50,
+    "queries": [
+      {
+        "question": "What position does the player who played for butler cc (ks) play?",
+        "generated_sql": "SELECT \"col3\" FROM table_1_10015132_11 WHERE \"col5\" = 'butler cc (ks)'",
+        "gold_sql": "SELECT col3 FROM table_1_10015132_11 WHERE col5 = 'Butler CC (KS)'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col3\" FROM table_1_10015132_11 WHERE \"col5\" = 'butler cc (ks)'",
+          "errors": [
+            "Column '\"col3\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col3\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_11"
+                ],
+                "columns_found": [
+                  "\"col3\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many schools did player number 3 play at?",
+        "generated_sql": "SELECT COUNT(\"col5\") FROM table_1_10015132_11 WHERE \"col1\" = 3",
+        "gold_sql": "SELECT COUNT(col5) FROM table_1_10015132_11 WHERE col1 = '3'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(\"col5\") FROM table_1_10015132_11 WHERE \"col1\" = 3",
+          "errors": [
+            "Column 'col5' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col5' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_11"
+                ],
+                "columns_found": [
+                  "col5"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What school did player number 21 play for?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10015132_11 WHERE \"col1\" = '21'",
+        "gold_sql": "SELECT col5 FROM table_1_10015132_11 WHERE col1 = '21'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col5\" FROM table_1_10015132_11 WHERE \"col1\" = '21'",
+          "errors": [
+            "Column '\"col5\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col5\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_11"
+                ],
+                "columns_found": [
+                  "\"col5\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Who is the player that wears number 42?",
+        "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for gpt-4 in organization org-wFDUdaJ81gO2e71hYZqq2gdJ on tokens per min (TPM): Limit 10000, Used 9532, Requested 471. Please try again in 18ms. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}",
+        "status": "failed"
+      },
+      {
+        "question": "What player played guard for toronto in 1996-97?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10015132_11 WHERE \"col3\" = 'Guard' AND \"col4\" = '1996-97'",
+        "gold_sql": "SELECT col0 FROM table_1_10015132_11 WHERE col3 = 'Guard' AND col4 = '1996-97'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col0\" FROM table_1_10015132_11 WHERE \"col3\" = 'Guard' AND \"col4\" = '1996-97'",
+          "errors": [
+            "Column '\"col0\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col0\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_11"
+                ],
+                "columns_found": [
+                  "\"col0\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Who are all of the players on the Westchester High School club team?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10015132_9 WHERE \"col5\" = 'Westchester High School'",
+        "gold_sql": "SELECT col0 FROM table_1_10015132_9 WHERE col5 = 'Westchester High School'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col0\" FROM table_1_10015132_9 WHERE \"col5\" = 'Westchester High School'",
+          "errors": [
+            "Column '\"col0\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col0\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_9"
+                ],
+                "columns_found": [
+                  "\"col0\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What school/club team is Amir Johnson on?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10015132_9 WHERE \"col0\" = 'Amir Johnson'",
+        "gold_sql": "SELECT col5 FROM table_1_10015132_9 WHERE col0 = 'Amir Johnson'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col5\" FROM table_1_10015132_9 WHERE \"col0\" = 'Amir Johnson'",
+          "errors": [
+            "Column '\"col5\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col5\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_9"
+                ],
+                "columns_found": [
+                  "\"col5\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the total amount of numbers on the Toronto team in 2005-06?",
+        "generated_sql": "SELECT COUNT(\"col1\") FROM table_1_10015132_9 WHERE \"col4\" = '2005-06'",
+        "gold_sql": "SELECT COUNT(col1) FROM table_1_10015132_9 WHERE col4 = '2005-06'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(\"col1\") FROM table_1_10015132_9 WHERE \"col4\" = '2005-06'",
+          "errors": [
+            "Column 'col1' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col1' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_9"
+                ],
+                "columns_found": [
+                  "col1"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the total number of positions on the Toronto team in 2006-07?",
+        "generated_sql": "SELECT COUNT(DISTINCT \"col3\") FROM table_1_10015132_9 WHERE \"col4\" = '2006-07'",
+        "gold_sql": "SELECT COUNT(col3) FROM table_1_10015132_9 WHERE col4 = '2006-07'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(DISTINCT \"col3\") FROM table_1_10015132_9 WHERE \"col4\" = '2006-07'",
+          "errors": [
+            "Column 'DISTINCT \"col3' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'DISTINCT \"col3' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_9"
+                ],
+                "columns_found": [
+                  "DISTINCT \"col3"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the nationality of the players on the Fresno State school/club team?",
+        "generated_sql": "SELECT \"col2\" FROM table_1_10015132_9 WHERE \"col5\" = 'Fresno State'",
+        "gold_sql": "SELECT col2 FROM table_1_10015132_9 WHERE col5 = 'Fresno State'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col2\" FROM table_1_10015132_9 WHERE \"col5\" = 'Fresno State'",
+          "errors": [
+            "Column '\"col2\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col2\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_9"
+                ],
+                "columns_found": [
+                  "\"col2\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What school/club team is Trey Johnson on?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10015132_9 WHERE \"col0\" = 'Trey Johnson'",
+        "gold_sql": "SELECT col5 FROM table_1_10015132_9 WHERE col0 = 'Trey Johnson'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col5\" FROM table_1_10015132_9 WHERE \"col0\" = 'Trey Johnson'",
+          "errors": [
+            "Column '\"col5\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col5\"' not found in schema. Available columns: ['No.', 'Player', 'Nationality', 'Position', 'Years in Toronto']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10015132_9"
+                ],
+                "columns_found": [
+                  "\"col5\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "When did Jacques Chirac stop being a G8 leader?",
+        "generated_sql": "SELECT \"col2\" FROM table_1_10026563_1 WHERE \"col3\" = 'Jacques Chirac'",
+        "gold_sql": "SELECT col2 FROM table_1_10026563_1 WHERE col3 = 'Jacques Chirac'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col2\" FROM table_1_10026563_1 WHERE \"col3\" = 'Jacques Chirac'",
+          "errors": [
+            "Column '\"col2\"' not found in schema. Available columns: ['Office', 'Began time as senior G8 leader', 'Person', 'Entered office as Head of State or Government', 'Ended time as senior G8 leader']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col2\"' not found in schema. Available columns: ['Office', 'Began time as senior G8 leader', 'Person', 'Entered office as Head of State or Government', 'Ended time as senior G8 leader']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10026563_1"
+                ],
+                "columns_found": [
+                  "\"col2\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "When did the Prime Minister of Italy take office?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10026563_1 WHERE \"col4\" = 'Prime Minister of Italy'",
+        "gold_sql": "SELECT col0 FROM table_1_10026563_1 WHERE col4 = 'Prime Minister of Italy'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col0\" FROM table_1_10026563_1 WHERE \"col4\" = 'Prime Minister of Italy'",
+          "errors": [
+            "Column '\"col0\"' not found in schema. Available columns: ['Office', 'Began time as senior G8 leader', 'Person', 'Entered office as Head of State or Government', 'Ended time as senior G8 leader']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col0\"' not found in schema. Available columns: ['Office', 'Began time as senior G8 leader', 'Person', 'Entered office as Head of State or Government', 'Ended time as senior G8 leader']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10026563_1"
+                ],
+                "columns_found": [
+                  "\"col0\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the English name of the country whose official native language is Dutch Papiamento?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_1008653_1 WHERE \"col4\" = 'Dutch Papiamento'",
+        "gold_sql": "SELECT col0 FROM table_1_1008653_1 WHERE col4 = 'Dutch Papiamento'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col0\" FROM table_1_1008653_1 WHERE \"col4\" = 'Dutch Papiamento'",
+          "errors": [
+            "Column '\"col0\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col0\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1008653_1"
+                ],
+                "columns_found": [
+                  "\"col0\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What official or native languages are spoken in the country whose capital city is Canberra?",
+        "generated_sql": "SELECT \"col4\" FROM table_1_1008653_1 WHERE \"col1\" = 'Canberra'",
+        "gold_sql": "SELECT col4 FROM table_1_1008653_1 WHERE col1 = 'Canberra'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col4\" FROM table_1_1008653_1 WHERE \"col1\" = 'Canberra'",
+          "errors": [
+            "Column '\"col4\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col4\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1008653_1"
+                ],
+                "columns_found": [
+                  "\"col4\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the local name given to the city of Canberra?",
+        "generated_sql": "SELECT \"col3\" FROM table_1_1008653_1 WHERE \"col1\" = 'Canberra'",
+        "gold_sql": "SELECT col3 FROM table_1_1008653_1 WHERE col1 = 'Canberra'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col3\" FROM table_1_1008653_1 WHERE \"col1\" = 'Canberra'",
+          "errors": [
+            "Column '\"col3\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col3\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1008653_1"
+                ],
+                "columns_found": [
+                  "\"col3\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the local name given to the capital of Anguilla?",
+        "generated_sql": "SELECT \"col3\" FROM table_1_1008653_1 WHERE \"col0\" = 'Anguilla'",
+        "gold_sql": "SELECT col3 FROM table_1_1008653_1 WHERE col2 = 'Anguilla'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col3\" FROM table_1_1008653_1 WHERE \"col0\" = 'Anguilla'",
+          "errors": [
+            "Column '\"col3\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col3\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1008653_1"
+                ],
+                "columns_found": [
+                  "\"col3\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the English name given to the city of St. John's?",
+        "generated_sql": "SELECT \"col1\" FROM table_1_1008653_1 WHERE \"col3\" = 'St. John''s'",
+        "gold_sql": "SELECT col1 FROM table_1_1008653_1 WHERE col3 = 'St. John''s'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col1\" FROM table_1_1008653_1 WHERE \"col3\" = 'St. John''s'",
+          "errors": [
+            "Unbalanced single quotes in SQL string",
+            "Column '\"col1\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col1\"' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1008653_1"
+                ],
+                "columns_found": [
+                  "\"col1\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": false,
+              "violations": [
+                "Unbalanced single quotes in SQL string"
+              ],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": false
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many capital cities does Australia have?",
+        "generated_sql": "SELECT COUNT(\"col1\") FROM table_1_1008653_1 WHERE \"col0\" = 'Australia'",
+        "gold_sql": "SELECT COUNT(col3) FROM table_1_1008653_1 WHERE col2 = 'Australia'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(\"col1\") FROM table_1_1008653_1 WHERE \"col0\" = 'Australia'",
+          "errors": [
+            "Column 'col1' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col1' not found in schema. Available columns: ['Country ( endonym )', 'Country ( exonym )', 'Official or native language(s) (alphabet/script)', 'Capital ( endonym )', 'Capital ( exonym )']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1008653_1"
+                ],
+                "columns_found": [
+                  "col1"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "The episode with production code 9abx02 was originally aired on what date?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10088101_1 WHERE \"col6\" = '9abx02'",
+        "gold_sql": "SELECT col5 FROM table_1_10088101_1 WHERE col6 = '9ABX02'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col5\" FROM table_1_10088101_1 WHERE \"col6\" = '9abx02'",
+          "errors": [
+            "Column '\"col5\"' not found in schema. Available columns: ['Production code', 'Title', 'No. in series', 'Directed by', 'Original air date']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col5\"' not found in schema. Available columns: ['Production code', 'Title', 'No. in series', 'Directed by', 'Original air date']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10088101_1"
+                ],
+                "columns_found": [
+                  "\"col5\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the episode number that has production code 8abx15?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10088101_1 WHERE \"col6\" = '8abx15'",
+        "gold_sql": "SELECT MIN(col1) FROM table_1_10088101_1 WHERE col6 = '8ABX15'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col0\" FROM table_1_10088101_1 WHERE \"col6\" = '8abx15'",
+          "errors": [
+            "Column '\"col0\"' not found in schema. Available columns: ['Production code', 'Title', 'No. in series', 'Directed by', 'Original air date']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col0\"' not found in schema. Available columns: ['Production code', 'Title', 'No. in series', 'Directed by', 'Original air date']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10088101_1"
+                ],
+                "columns_found": [
+                  "\"col0\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Name the minimum tiesplayed for 6 years",
+        "generated_sql": "SELECT MIN(\"col5\") FROM table_1_10295819_2 WHERE \"col4\" = 6",
+        "gold_sql": "SELECT MIN(col5) FROM table_1_10295819_2 WHERE col4 = 6",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT MIN(\"col5\") FROM table_1_10295819_2 WHERE \"col4\" = 6",
+          "errors": [
+            "Column 'col5' not found in schema. Available columns: ['Player', 'Singles W–L', 'Highest doubles ranking', 'Doubles W–L', 'Years played']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col5' not found in schema. Available columns: ['Player', 'Singles W–L', 'Highest doubles ranking', 'Doubles W–L', 'Years played']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10295819_2"
+                ],
+                "columns_found": [
+                  "col5"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the amount of trees, that require replacement when prevailing types, % is pine — 29.37 poplar — 26.12 acer negundo — 13.2?",
+        "generated_sql": "SELECT \"col4\" FROM table_1_10342194_3 WHERE \"col2\" = 'pine — 29.37 poplar — 26.12 acer negundo — 13.2'",
+        "gold_sql": "SELECT col4 FROM table_1_10342194_3 WHERE col2 = 'Pine — 29.37 Poplar — 26.12 Acer negundo — 13.2'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col4\" FROM table_1_10342194_3 WHERE \"col2\" = 'pine — 29.37 poplar — 26.12 acer negundo — 13.2'",
+          "errors": [
+            "Column '\"col4\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col4\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10342194_3"
+                ],
+                "columns_found": [
+                  "\"col4\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the amount of trees, that require replacement when district is leninsky?",
+        "generated_sql": "SELECT \"col4\" FROM table_1_10342194_3 WHERE \"col0\" = 'leninsky'",
+        "gold_sql": "SELECT col4 FROM table_1_10342194_3 WHERE col0 = 'Leninsky'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col4\" FROM table_1_10342194_3 WHERE \"col0\" = 'leninsky'",
+          "errors": [
+            "Column '\"col4\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col4\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10342194_3"
+                ],
+                "columns_found": [
+                  "\"col4\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the district when the total amount of trees is smaller than 150817.6878461314 and amount of old trees is 1,928 (1.89%)?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10342194_3 WHERE \"col1\" < 150817.6878461314 AND \"col3\" = '1,928 (1.89%)'",
+        "gold_sql": "SELECT col0 FROM table_1_10342194_3 WHERE col1 < 150817.6878461314 AND col3 = '1,928 (1.89%)'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col0\" FROM table_1_10342194_3 WHERE \"col1\" < 150817.6878461314 AND \"col3\" = '1,928 (1.89%)'",
+          "errors": [
+            "Column '\"col0\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col0\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10342194_3"
+                ],
+                "columns_found": [
+                  "\"col0\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the amount of trees, that require replacement when the district is motovilikhinsky?",
+        "generated_sql": "SELECT \"col4\" FROM table_1_10342194_3 WHERE \"col0\" = 'motovilikhinsky'",
+        "gold_sql": "SELECT col4 FROM table_1_10342194_3 WHERE col0 = 'Motovilikhinsky'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col4\" FROM table_1_10342194_3 WHERE \"col0\" = 'motovilikhinsky'",
+          "errors": [
+            "Column '\"col4\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col4\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10342194_3"
+                ],
+                "columns_found": [
+                  "\"col4\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the total amount of trees when district is leninsky?",
+        "generated_sql": "SELECT \"col1\" FROM table_1_10342194_3 WHERE \"col0\" = 'leninsky'",
+        "gold_sql": "SELECT MAX(col1) FROM table_1_10342194_3 WHERE col0 = 'Leninsky'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col1\" FROM table_1_10342194_3 WHERE \"col0\" = 'leninsky'",
+          "errors": [
+            "Column '\"col1\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col1\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10342194_3"
+                ],
+                "columns_found": [
+                  "\"col1\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the district when prevailing types, % is acer negundo — 30.22 tilia — 18.6 poplar — 15.23?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10342194_3 WHERE \"col2\" = 'acer negundo — 30.22 tilia — 18.6 poplar — 15.23'",
+        "gold_sql": "SELECT col0 FROM table_1_10342194_3 WHERE col2 = 'Acer negundo — 30.22 Tilia — 18.6 Poplar — 15.23'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col0\" FROM table_1_10342194_3 WHERE \"col2\" = 'acer negundo — 30.22 tilia — 18.6 poplar — 15.23'",
+          "errors": [
+            "Column '\"col0\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col0\"' not found in schema. Available columns: ['Prevailing types, %', 'Total amount of trees', 'District', 'Amount of trees, that require replacement', 'Amount of old trees']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10342194_3"
+                ],
+                "columns_found": [
+                  "\"col0\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "When the value of \"since beginning of big 12\" is synonymous with its' category, what are the in Ames values?",
+        "generated_sql": "SELECT \"col2\" FROM table_1_10429820_13 WHERE \"col8\" = 'Since Beginning of Big 12'",
+        "gold_sql": "SELECT col2 FROM table_1_10429820_13 WHERE col8 = 'Since Beginning of Big 12'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col2\" FROM table_1_10429820_13 WHERE \"col8\" = 'Since Beginning of Big 12'",
+          "errors": [
+            "Column '\"col2\"' not found in schema. Available columns: ['Last 10 Meetings', 'at Opponents Venue', 'at Neutral Site', 'Current Streak', 'Since Beginning of Big 12']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col2\"' not found in schema. Available columns: ['Last 10 Meetings', 'at Opponents Venue', 'at Neutral Site', 'Current Streak', 'Since Beginning of Big 12']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10429820_13"
+                ],
+                "columns_found": [
+                  "\"col2\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "what's the u.s. open cup status for regular season of 4th, atlantic division ",
+        "generated_sql": "SELECT \"col5\" FROM table_1_1046170_5 WHERE \"col3\" = '4th' AND \"col1\" = 'Atlantic'",
+        "gold_sql": "SELECT col5 FROM table_1_1046170_5 WHERE col3 = '4th, Atlantic Division'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col5\" FROM table_1_1046170_5 WHERE \"col3\" = '4th' AND \"col1\" = 'Atlantic'",
+          "errors": [
+            "Column '\"col5\"' not found in schema. Available columns: ['Division', 'League', 'Playoffs', 'Regular Season', 'Year']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col5\"' not found in schema. Available columns: ['Division', 'League', 'Playoffs', 'Regular Season', 'Year']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1046170_5"
+                ],
+                "columns_found": [
+                  "\"col5\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "how many division  did not qualify for u.s. open cup in 2003",
+        "generated_sql": "SELECT COUNT(\"col1\") FROM table_1_1046170_5 WHERE \"col0\" = 2003 AND \"col5\" = 'Did not qualify'",
+        "gold_sql": "SELECT col1 FROM table_1_1046170_5 WHERE col5 = 'Did Not Qualify' AND col0 = 2003",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(\"col1\") FROM table_1_1046170_5 WHERE \"col0\" = 2003 AND \"col5\" = 'Did not qualify'",
+          "errors": [
+            "Column 'col1' not found in schema. Available columns: ['Division', 'League', 'Playoffs', 'Regular Season', 'Year']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col1' not found in schema. Available columns: ['Division', 'League', 'Playoffs', 'Regular Season', 'Year']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1046170_5"
+                ],
+                "columns_found": [
+                  "col1"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "which round is u.s. open cup division semifinals",
+        "generated_sql": "SELECT \"col5\" FROM table_1_1046170_5 WHERE \"col5\" = 'Semifinals'",
+        "gold_sql": "SELECT col5 FROM table_1_1046170_5 WHERE col4 = 'Division Semifinals'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col5\" FROM table_1_1046170_5 WHERE \"col5\" = 'Semifinals'",
+          "errors": [
+            "Column '\"col5\"' not found in schema. Available columns: ['Division', 'League', 'Playoffs', 'Regular Season', 'Year']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col5\"' not found in schema. Available columns: ['Division', 'League', 'Playoffs', 'Regular Season', 'Year']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1046170_5"
+                ],
+                "columns_found": [
+                  "\"col5\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "what are all the playoffs for regular season is 1st, atlantic division",
+        "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for gpt-4 in organization org-wFDUdaJ81gO2e71hYZqq2gdJ on tokens per min (TPM): Limit 10000, Used 9529, Requested 477. Please try again in 36ms. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}",
+        "status": "failed"
+      },
+      {
+        "question": "what are all the playoffs for u.s. open cup in 1st round",
+        "generated_sql": "SELECT \"col4\" FROM table_1_1046170_5 WHERE \"col5\" = '1st round'",
+        "gold_sql": "SELECT col4 FROM table_1_1046170_5 WHERE col5 = '1st Round'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col4\" FROM table_1_1046170_5 WHERE \"col5\" = '1st round'",
+          "errors": [
+            "Column '\"col4\"' not found in schema. Available columns: ['Division', 'League', 'Playoffs', 'Regular Season', 'Year']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col4\"' not found in schema. Available columns: ['Division', 'League', 'Playoffs', 'Regular Season', 'Year']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1046170_5"
+                ],
+                "columns_found": [
+                  "\"col4\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "what is the total number of 2nd leg where aggregate is 7-2",
+        "generated_sql": "SELECT COUNT(\"col5\") FROM table_1_1061075_1 WHERE \"col6\" = '7-2'",
+        "gold_sql": "SELECT COUNT(col5) FROM table_1_1061075_1 WHERE col6 = '7-2'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(\"col5\") FROM table_1_1061075_1 WHERE \"col6\" = '7-2'",
+          "errors": [
+            "Column 'col5' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col5' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1061075_1"
+                ],
+                "columns_found": [
+                  "col5"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": " what's the aggregate where 1st leg is 3–2",
+        "generated_sql": "SELECT \"col6\" FROM table_1_1061075_1 WHERE \"col4\" = '3–2'",
+        "gold_sql": "SELECT col6 FROM table_1_1061075_1 WHERE col4 = '3–2'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col6\" FROM table_1_1061075_1 WHERE \"col4\" = '3–2'",
+          "errors": [
+            "Column '\"col6\"' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col6\"' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1061075_1"
+                ],
+                "columns_found": [
+                  "\"col6\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": " what's the competition where aggregate is 4–7",
+        "generated_sql": "SELECT \"col1\" FROM table_1_1061075_1 WHERE \"col6\" = '4–7'",
+        "gold_sql": "SELECT col1 FROM table_1_1061075_1 WHERE col6 = '4–7'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col1\" FROM table_1_1061075_1 WHERE \"col6\" = '4–7'",
+          "errors": [
+            "Column '\"col1\"' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col1\"' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1061075_1"
+                ],
+                "columns_found": [
+                  "\"col1\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": " what's the competition where 1st leg is 4-1 (h)",
+        "generated_sql": "SELECT \"col1\" FROM table_1_1061075_1 WHERE \"col4\" = '4-1 (h)'",
+        "gold_sql": "SELECT col1 FROM table_1_1061075_1 WHERE col4 = '4-1 (h)'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col1\" FROM table_1_1061075_1 WHERE \"col4\" = '4-1 (h)'",
+          "errors": [
+            "Column '\"col1\"' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col1\"' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1061075_1"
+                ],
+                "columns_found": [
+                  "\"col1\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "what is the total number of round where opponents is haugar",
+        "generated_sql": "SELECT COUNT(\"col2\") FROM table_1_1061075_1 WHERE \"col3\" = 'haugar'",
+        "gold_sql": "SELECT COUNT(col2) FROM table_1_1061075_1 WHERE col3 = 'Haugar'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(\"col2\") FROM table_1_1061075_1 WHERE \"col3\" = 'haugar'",
+          "errors": [
+            "Column 'col2' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col2' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1061075_1"
+                ],
+                "columns_found": [
+                  "col2"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": " what's the 1st leg where opponents is galatasaray",
+        "generated_sql": "SELECT \"col4\" FROM table_1_1061075_1 WHERE \"col3\" = 'galatasaray'",
+        "gold_sql": "SELECT col4 FROM table_1_1061075_1 WHERE col3 = 'Galatasaray'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col4\" FROM table_1_1061075_1 WHERE \"col3\" = 'galatasaray'",
+          "errors": [
+            "Column '\"col4\"' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col4\"' not found in schema. Available columns: ['Season', 'Round', 'Aggregate', 'Competition', 'Opponents']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_1061075_1"
+                ],
+                "columns_found": [
+                  "\"col4\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the highest Rd that Tom Sneva had the pole position in?",
+        "generated_sql": "SELECT MAX(\"col0\") FROM table_1_10706961_2 WHERE \"col1\" = 'Tom Sneva' AND \"col2\" = 'Pole Position'",
+        "gold_sql": "SELECT MAX(col0) FROM table_1_10706961_2 WHERE col2 = 'Tom Sneva'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT MAX(\"col0\") FROM table_1_10706961_2 WHERE \"col1\" = 'Tom Sneva' AND \"col2\" = 'Pole Position'",
+          "errors": [
+            "Column 'col0' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col0' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10706961_2"
+                ],
+                "columns_found": [
+                  "col0"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many winning drivers were there in the race that had a fastest lap time of 56.920?",
+        "generated_sql": "SELECT COUNT(\"col4\") FROM table_1_10706961_2 WHERE \"col3\" = '56.920'",
+        "gold_sql": "SELECT COUNT(col4) FROM table_1_10706961_2 WHERE col3 = '56.920'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(\"col4\") FROM table_1_10706961_2 WHERE \"col3\" = '56.920'",
+          "errors": [
+            "Column 'col4' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col4' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10706961_2"
+                ],
+                "columns_found": [
+                  "col4"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many reports are there in the race that Forsythe Racing won and Teo Fabi had the pole position in?",
+        "generated_sql": "SELECT COUNT(\"col6\") FROM table_1_10706961_2 WHERE \"col5\" = 'Forsythe Racing' AND \"col2\" = 'Teo Fabi'",
+        "gold_sql": "SELECT COUNT(col6) FROM table_1_10706961_2 WHERE col5 = 'Forsythe Racing' AND col2 = 'Teo Fabi'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(\"col6\") FROM table_1_10706961_2 WHERE \"col5\" = 'Forsythe Racing' AND \"col2\" = 'Teo Fabi'",
+          "errors": [
+            "Column 'col6' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col6' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10706961_2"
+                ],
+                "columns_found": [
+                  "col6"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Which Rd took place at the Indianapolis 500?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10706961_2 WHERE \"col1\" = 'Indianapolis 500'",
+        "gold_sql": "SELECT col0 FROM table_1_10706961_2 WHERE col1 = 'Indianapolis 500'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col0\" FROM table_1_10706961_2 WHERE \"col1\" = 'Indianapolis 500'",
+          "errors": [
+            "Column '\"col0\"' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col0\"' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10706961_2"
+                ],
+                "columns_found": [
+                  "\"col0\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Which teams won when Bobby Rahal was their winning driver?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10706961_2 WHERE \"col4\" = 'Bobby Rahal'",
+        "gold_sql": "SELECT col5 FROM table_1_10706961_2 WHERE col4 = 'Bobby Rahal'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col5\" FROM table_1_10706961_2 WHERE \"col4\" = 'Bobby Rahal'",
+          "errors": [
+            "Column '\"col5\"' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col5\"' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10706961_2"
+                ],
+                "columns_found": [
+                  "\"col5\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What was the fastest lap time in the Escort Radar Warning 200?",
+        "generated_sql": "SELECT \"col3\" FROM table_1_10706961_2 WHERE \"col1\" = 'Escort Radar Warning 200'",
+        "gold_sql": "SELECT col3 FROM table_1_10706961_2 WHERE col1 = 'Escort Radar Warning 200'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col3\" FROM table_1_10706961_2 WHERE \"col1\" = 'Escort Radar Warning 200'",
+          "errors": [
+            "Column '\"col3\"' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col3\"' not found in schema. Available columns: ['Pole Position', 'Name', 'Report', 'Fastest Lap', 'Winning team']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10706961_2"
+                ],
+                "columns_found": [
+                  "\"col3\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What report was there for the porsche north america?",
+        "generated_sql": "SELECT \"col8\" FROM table_1_10707176_2 WHERE \"col7\" = 'porsche north america'",
+        "gold_sql": "SELECT col8 FROM table_1_10707176_2 WHERE col7 = 'Porsche North America'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col8\" FROM table_1_10707176_2 WHERE \"col7\" = 'porsche north america'",
+          "errors": [
+            "Column '\"col8\"' not found in schema. Available columns: ['Rnd', 'Pole position', 'Date', 'Race Name', 'Report']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col8\"' not found in schema. Available columns: ['Rnd', 'Pole position', 'Date', 'Race Name', 'Report']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10707176_2"
+                ],
+                "columns_found": [
+                  "\"col8\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What rnds were there for the phoenix international raceway?",
+        "generated_sql": "SELECT \"col0\" FROM table_1_10707176_2 WHERE \"col2\" = 'Phoenix International Raceway'",
+        "gold_sql": "SELECT col0 FROM table_1_10707176_2 WHERE col2 = 'Phoenix International Raceway'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col0\" FROM table_1_10707176_2 WHERE \"col2\" = 'Phoenix International Raceway'",
+          "errors": [
+            "Column '\"col0\"' not found in schema. Available columns: ['Rnd', 'Pole position', 'Date', 'Race Name', 'Report']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col0\"' not found in schema. Available columns: ['Rnd', 'Pole position', 'Date', 'Race Name', 'Report']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10707176_2"
+                ],
+                "columns_found": [
+                  "\"col0\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Who was the pole position for the rnd equalling 12?",
+        "generated_sql": "SELECT \"col5\" FROM table_1_10707176_2 WHERE \"col0\" = 12",
+        "gold_sql": "SELECT col5 FROM table_1_10707176_2 WHERE col0 = '12'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"col5\" FROM table_1_10707176_2 WHERE \"col0\" = 12",
+          "errors": [
+            "Column '\"col5\"' not found in schema. Available columns: ['Rnd', 'Pole position', 'Date', 'Race Name', 'Report']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"col5\"' not found in schema. Available columns: ['Rnd', 'Pole position', 'Date', 'Race Name', 'Report']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10707176_2"
+                ],
+                "columns_found": [
+                  "\"col5\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many reports were the for the cleveland burke lakefront airport circut?",
+        "generated_sql": "SELECT COUNT(\"col8\") FROM table_1_10707176_2 WHERE \"col2\" = 'Cleveland Burke Lakefront Airport'",
+        "gold_sql": "SELECT COUNT(col8) FROM table_1_10707176_2 WHERE col2 = 'Cleveland Burke Lakefront Airport'",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(\"col8\") FROM table_1_10707176_2 WHERE \"col2\" = 'Cleveland Burke Lakefront Airport'",
+          "errors": [
+            "Column 'col8' not found in schema. Available columns: ['Rnd', 'Pole position', 'Date', 'Race Name', 'Report']..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'col8' not found in schema. Available columns: ['Rnd', 'Pole position', 'Date', 'Race Name', 'Report']..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TABLE_1_10707176_2"
+                ],
+                "columns_found": [
+                  "col8"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      }
+    ],
+    "metrics": {
+      "execution_accuracy": 0.7291666666666666,
+      "exact_match": 0.0,
+      "safety_violations_prevented": 0,
+      "auto_repair_success": 48,
+      "total": 50,
+      "successful": 48,
+      "failed": 2
+    }
+  }
+}

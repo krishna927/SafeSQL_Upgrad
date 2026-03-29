@@ -1,0 +1,1306 @@
+{
+  "spider_model3": {
+    "model": "Model 3 (Baseline GPT-4)",
+    "dataset": "spider",
+    "n_samples": 20,
+    "queries": [
+      {
+        "question": "Find all airlines that have fewer than 200 flights.",
+        "generated_sql": "SELECT \"airlines\".\"name\" \nFROM \"airlines\" \nJOIN \"flights\" ON \"airlines\".\"id\" = \"flights\".\"airline_id\" \nGROUP BY \"airlines\".\"name\" \nHAVING COUNT(\"flights\".\"id\") < 200",
+        "gold_sql": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline HAVING count(*)  <  200",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the number of car models that are produced by each maker and what is the id and full name of each maker?",
+        "generated_sql": "SELECT \"car makers\".\"id\", \"car makers\".\"full name\", COUNT(\"model list\".\"id\") AS \"number_of_models\"\nFROM \"car makers\"\nJOIN \"model list\" ON \"car makers\".\"id\" = \"model list\".\"maker_id\"\nGROUP BY \"car makers\".\"id\", \"car makers\".\"full name\"",
+        "gold_sql": "SELECT Count(*) ,  T2.FullName ,  T2.id FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id GROUP BY T2.id;",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What are the towns from which at least two teachers come from?",
+        "generated_sql": "SELECT \"town\" FROM teacher GROUP BY \"town\" HAVING COUNT(*) >= 2",
+        "gold_sql": "SELECT Hometown FROM teacher GROUP BY Hometown HAVING COUNT(*)  >=  2",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "find the code of the country where has the greatest number of players.",
+        "generated_sql": "SELECT \"country_code\" FROM \"players\" GROUP BY \"country_code\" ORDER BY COUNT(*) DESC LIMIT 1",
+        "gold_sql": "SELECT country_code FROM players GROUP BY country_code ORDER BY count(*) DESC LIMIT 1",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Return the number of flights.",
+        "generated_sql": "SELECT COUNT(*) FROM flights",
+        "gold_sql": "SELECT count(*) FROM FLIGHTS",
+        "execution_accuracy": 1.0,
+        "exact_match": 1.0,
+        "status": "success"
+      },
+      {
+        "question": "How many different forms of governments are there in Africa?",
+        "generated_sql": "SELECT COUNT(DISTINCT \"GovernmentForm\") \nFROM \"country\" \nWHERE \"Continent\" = 'Africa'",
+        "gold_sql": "SELECT count(DISTINCT GovernmentForm) FROM country WHERE Continent  =  \"Africa\"",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "List all document ids with at least two paragraphs.",
+        "generated_sql": "SELECT \"documents\".\"id\" \nFROM \"documents\" \nJOIN \"paragraphs\" ON \"documents\".\"id\" = \"paragraphs\".\"document_id\" \nGROUP BY \"documents\".\"id\" \nHAVING COUNT(\"paragraphs\".\"id\") >= 2",
+        "gold_sql": "SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*)  >=  2",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the hometown of the youngest teacher?",
+        "generated_sql": "SELECT \"hometown\" FROM teacher ORDER BY \"age\" ASC LIMIT 1",
+        "gold_sql": "SELECT Hometown FROM teacher ORDER BY Age ASC LIMIT 1",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "How many official languages does Afghanistan have?",
+        "generated_sql": "SELECT COUNT(*) \nFROM \"countrylanguage\" \nWHERE \"CountryCode\" = (SELECT \"Code\" FROM \"country\" WHERE \"Name\" = 'Afghanistan') \nAND \"IsOfficial\" = 'T'",
+        "gold_sql": "SELECT COUNT(*) FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Name  =  \"Afghanistan\" AND IsOfficial  =  \"T\"",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Show all template type codes and the number of documents using each type.",
+        "generated_sql": "SELECT \"reference template types\".\"template type code\", COUNT(\"documents\".\"document id\") AS \"number of documents\"\nFROM \"reference template types\"\nLEFT JOIN \"templates\" ON \"reference template types\".\"template type code\" = \"templates\".\"template type code\"\nLEFT JOIN \"documents\" ON \"templates\".\"template id\" = \"documents\".\"template id\"\nGROUP BY \"reference template types\".\"template type code\"",
+        "gold_sql": "SELECT T1.template_type_code ,  count(*) FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What languages are only used by a single country with a republic government?",
+        "generated_sql": "SELECT \"countrylanguage\".\"Language\"\nFROM \"countrylanguage\"\nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\"\nWHERE \"country\".\"GovernmentForm\" = 'Republic'\nGROUP BY \"countrylanguage\".\"Language\"\nHAVING COUNT(DISTINCT \"countrylanguage\".\"CountryCode\") = 1",
+        "gold_sql": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.GovernmentForm  =  \"Republic\" GROUP BY T2.Language HAVING COUNT(*)  =  1",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What are the average ages of losers and winners across matches?",
+        "generated_sql": "SELECT \n    AVG(\"players_winner\".\"age\") AS \"average_winner_age\",\n    AVG(\"players_loser\".\"age\") AS \"average_loser_age\"\nFROM \n    \"matches\"\nJOIN \n    \"players\" AS \"players_winner\" ON \"matches\".\"winner_id\" = \"players_winner\".\"id\"\nJOIN \n    \"players\" AS \"players_loser\" ON \"matches\".\"loser_id\" = \"players_loser\".\"id\"",
+        "gold_sql": "SELECT avg(loser_age) ,  avg(winner_age) FROM matches",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Who is enrolled in a Bachelor degree program? List the first name, middle name, last name.",
+        "generated_sql": "SELECT \"students\".\"first name\", \"students\".\"middle name\", \"students\".\"last name\"\nFROM \"students\"\nJOIN \"degree programs\" ON \"students\".\"degree program id\" = \"degree programs\".\"id\"\nWHERE \"degree programs\".\"name\" LIKE '%Bachelor%'",
+        "gold_sql": "SELECT DISTINCT T1.first_name ,  T1.middle_name ,  T1.last_name FROM Students AS T1 JOIN Student_Enrolment AS T2 ON T1.student_id  =  T2.student_id JOIN Degree_Programs AS T3 ON T2.degree_program_id  =  T3.degree_program_id WHERE T3.degree_summary_name  =  'Bachelor'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What is the code of airport that has fewest number of flights?",
+        "generated_sql": "SELECT \"airports\".\"code\" \nFROM \"airports\" \nJOIN \"flights\" ON \"airports\".\"code\" = \"flights\".\"origin\" OR \"airports\".\"code\" = \"flights\".\"destination\" \nGROUP BY \"airports\".\"code\" \nORDER BY COUNT(\"flights\".\"flight_id\") ASC \nLIMIT 1",
+        "gold_sql": "SELECT T1.AirportCode FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport OR T1.AirportCode  =  T2.SourceAirport GROUP BY T1.AirportCode ORDER BY count(*) LIMIT 1",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What are the locations and names of all stations with capacity between 5000 and 10000?",
+        "generated_sql": "SELECT \"location\", \"name\" FROM stadium WHERE \"capacity\" BETWEEN 5000 AND 10000",
+        "gold_sql": "SELECT LOCATION ,  name FROM stadium WHERE capacity BETWEEN 5000 AND 10000",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Which languages are spoken by only one country in republic governments?",
+        "generated_sql": "SELECT \"countrylanguage\".\"Language\"\nFROM \"countrylanguage\"\nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\"\nWHERE \"country\".\"GovernmentForm\" = 'Republic'\nGROUP BY \"countrylanguage\".\"Language\"\nHAVING COUNT(DISTINCT \"countrylanguage\".\"CountryCode\") = 1",
+        "gold_sql": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.GovernmentForm  =  \"Republic\" GROUP BY T2.Language HAVING COUNT(*)  =  1",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Give the names of countries with English and French as official languages.",
+        "generated_sql": "SELECT DISTINCT \"country\".\"Name\"\nFROM \"country\"\nJOIN \"countrylanguage\" AS \"cl1\" ON \"country\".\"Code\" = \"cl1\".\"CountryCode\"\nJOIN \"countrylanguage\" AS \"cl2\" ON \"country\".\"Code\" = \"cl2\".\"CountryCode\"\nWHERE \"cl1\".\"Language\" = 'English' AND \"cl1\".\"IsOfficial\" = 'T'\nAND \"cl2\".\"Language\" = 'French' AND \"cl2\".\"IsOfficial\" = 'T'",
+        "gold_sql": "SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"English\" AND T2.IsOfficial  =  \"T\" INTERSECT SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"French\" AND T2.IsOfficial  =  \"T\"",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Whose permanent address is different from his or her current address? List his or her first name.",
+        "generated_sql": "SELECT \"students\".\"first name\"\nFROM \"students\"\nJOIN \"addresses\" AS \"permanent_address\" ON \"students\".\"permanent address id\" = \"permanent_address\".\"id\"\nJOIN \"addresses\" AS \"current_address\" ON \"students\".\"current address id\" = \"current_address\".\"id\"\nWHERE \"permanent_address\".\"address\" <> \"current_address\".\"address\"",
+        "gold_sql": "SELECT first_name FROM Students WHERE current_address_id != permanent_address_id",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "What major is every student who does not own a cat as a pet, and also how old are they?",
+        "generated_sql": "SELECT \"student\".\"major\", \"student\".\"age\"\nFROM \"student\"\nLEFT JOIN \"has pet\" ON \"student\".\"id\" = \"has pet\".\"student_id\"\nLEFT JOIN \"pets\" ON \"has pet\".\"pet_id\" = \"pets\".\"id\"\nWHERE \"pets\".\"type\" IS NULL OR \"pets\".\"type\" != 'cat'",
+        "gold_sql": "SELECT major ,  age FROM student WHERE stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      },
+      {
+        "question": "Find the names of the visitors whose membership level is higher than 4, and order the results by the level from high to low.",
+        "generated_sql": "SELECT \"name\" \nFROM \"customer\" \nWHERE \"membership_level\" > 4 \nORDER BY \"membership_level\" DESC",
+        "gold_sql": "SELECT name FROM visitor WHERE Level_of_membership  >  4 ORDER BY Level_of_membership DESC",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "status": "success"
+      }
+    ],
+    "metrics": {
+      "execution_accuracy": 0.45,
+      "exact_match": 0.05,
+      "total": 20,
+      "successful": 20,
+      "failed": 0
+    }
+  },
+  "spider_model1": {
+    "model": "Model 1 (GPT-4 + SafeSQL)",
+    "dataset": "spider",
+    "n_samples": 20,
+    "queries": [
+      {
+        "question": "Find all airlines that have fewer than 200 flights.",
+        "generated_sql": "SELECT \"airlines\".\"name\" \nFROM \"airlines\" \nJOIN \"flights\" ON \"airlines\".\"id\" = \"flights\".\"airline_id\" \nGROUP BY \"airlines\".\"name\" \nHAVING COUNT(\"flights\".\"id\") < 200",
+        "gold_sql": "SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline GROUP BY T1.Airline HAVING count(*)  <  200",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"airlines\".\"name\" \nFROM \"airlines\" \nJOIN \"flights\" ON \"airlines\".\"id\" = \"flights\".\"airline_id\" \nGROUP BY \"airlines\".\"name\" \nHAVING COUNT(\"flights\".\"id\") < 200",
+          "errors": [
+            "Column '\"airlines\".\"name\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"airlines\".\"name\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"airlines\".\"name\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the number of car models that are produced by each maker and what is the id and full name of each maker?",
+        "generated_sql": "SELECT \"car makers\".\"id\", \"car makers\".\"full name\", COUNT(\"model list\".\"id\") AS \"number_of_models\"\nFROM \"car makers\"\nJOIN \"model list\" ON \"car makers\".\"id\" = \"model list\".\"maker_id\"\nGROUP BY \"car makers\".\"id\", \"car makers\".\"full name\"",
+        "gold_sql": "SELECT Count(*) ,  T2.FullName ,  T2.id FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id GROUP BY T2.id;",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"car makers\".\"id\", \"car makers\".\"full name\", COUNT(\"model list\".\"id\") AS \"number_of_models\"\nFROM \"car makers\"\nJOIN \"model list\" ON \"car makers\".\"id\" = \"model list\".\"maker_id\"\nGROUP BY \"car makers\".\"id\", \"car makers\".\"full name\"",
+          "errors": [
+            "Column '\"car makers\".\"full name\"' not found in schema. Available columns: []...",
+            "Column 'AS \"number_of_models\"' not found in schema. Available columns: []...",
+            "Column '\"car makers\".\"id\"' not found in schema. Available columns: []...",
+            "Column 'model list\".\"id' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"car makers\".\"full name\"' not found in schema. Available columns: []...",
+                "Column 'AS \"number_of_models\"' not found in schema. Available columns: []...",
+                "Column '\"car makers\".\"id\"' not found in schema. Available columns: []...",
+                "Column 'model list\".\"id' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"car makers\".\"full name\"",
+                  "AS \"number_of_models\"",
+                  "\"car makers\".\"id\"",
+                  "model list\".\"id"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the towns from which at least two teachers come from?",
+        "generated_sql": "SELECT \"town\" FROM teacher GROUP BY \"town\" HAVING COUNT(*) >= 2",
+        "gold_sql": "SELECT Hometown FROM teacher GROUP BY Hometown HAVING COUNT(*)  >=  2",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"town\" FROM teacher GROUP BY \"town\" HAVING COUNT(*) >= 2",
+          "errors": [
+            "Column '\"town\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"town\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TEACHER"
+                ],
+                "columns_found": [
+                  "\"town\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "find the code of the country where has the greatest number of players.",
+        "generated_sql": "SELECT \"country_code\" FROM players GROUP BY \"country_code\" ORDER BY COUNT(*) DESC LIMIT 1",
+        "gold_sql": "SELECT country_code FROM players GROUP BY country_code ORDER BY count(*) DESC LIMIT 1",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"country_code\" FROM players GROUP BY \"country_code\" ORDER BY COUNT(*) DESC LIMIT 1",
+          "errors": [
+            "Column '\"country_code\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "ORDER BY column 'COUNT(*)' may be invalid"
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"country_code\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "PLAYERS"
+                ],
+                "columns_found": [
+                  "\"country_code\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "ORDER BY column 'COUNT(*)' may be invalid"
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Return the number of flights.",
+        "generated_sql": "SELECT COUNT(*) FROM flights",
+        "gold_sql": "SELECT count(*) FROM FLIGHTS",
+        "execution_accuracy": 1.0,
+        "exact_match": 1.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(*) FROM flights",
+          "errors": [
+            "Column '*' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '*' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "FLIGHTS"
+                ],
+                "columns_found": [
+                  "*"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many different forms of governments are there in Africa?",
+        "generated_sql": "SELECT COUNT(DISTINCT \"GovernmentForm\") \nFROM \"country\" \nWHERE \"Continent\" = 'Africa'",
+        "gold_sql": "SELECT count(DISTINCT GovernmentForm) FROM country WHERE Continent  =  \"Africa\"",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(DISTINCT \"GovernmentForm\") \nFROM \"country\" \nWHERE \"Continent\" = 'Africa'",
+          "errors": [
+            "Column 'DISTINCT \"GovernmentForm' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'DISTINCT \"GovernmentForm' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "DISTINCT \"GovernmentForm"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "List all document ids with at least two paragraphs.",
+        "generated_sql": "SELECT \"documents\".\"id\" \nFROM \"documents\" \nJOIN \"paragraphs\" ON \"documents\".\"id\" = \"paragraphs\".\"document_id\" \nGROUP BY \"documents\".\"id\" \nHAVING COUNT(\"paragraphs\".\"id\") >= 2",
+        "gold_sql": "SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*)  >=  2",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"documents\".\"id\" \nFROM \"documents\" \nJOIN \"paragraphs\" ON \"documents\".\"id\" = \"paragraphs\".\"document_id\" \nGROUP BY \"documents\".\"id\" \nHAVING COUNT(\"paragraphs\".\"id\") >= 2",
+          "errors": [
+            "Column '\"documents\".\"id\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"documents\".\"id\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"documents\".\"id\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the hometown of the youngest teacher?",
+        "generated_sql": "SELECT \"hometown\" FROM teacher ORDER BY \"age\" ASC LIMIT 1",
+        "gold_sql": "SELECT Hometown FROM teacher ORDER BY Age ASC LIMIT 1",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"hometown\" FROM teacher ORDER BY \"age\" ASC LIMIT 1",
+          "errors": [
+            "Column '\"hometown\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "ORDER BY column '\"age\"' may be invalid"
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"hometown\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "TEACHER"
+                ],
+                "columns_found": [
+                  "\"hometown\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "ORDER BY column '\"age\"' may be invalid"
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "How many official languages does Afghanistan have?",
+        "generated_sql": "SELECT COUNT(*) \nFROM countrylanguage \nJOIN country ON country.Code = countrylanguage.CountryCode \nWHERE country.Name = 'Afghanistan' AND countrylanguage.IsOfficial = 'T'",
+        "gold_sql": "SELECT COUNT(*) FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Name  =  \"Afghanistan\" AND IsOfficial  =  \"T\"",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT COUNT(*) \nFROM countrylanguage \nJOIN country ON country.Code = countrylanguage.CountryCode \nWHERE country.Name = 'Afghanistan' AND countrylanguage.IsOfficial = 'T'",
+          "errors": [
+            "Column '*' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '*' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "COUNTRY",
+                  "COUNTRYLANGUAGE"
+                ],
+                "columns_found": [
+                  "*"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Show all template type codes and the number of documents using each type.",
+        "generated_sql": "SELECT \"reference template types\".\"type_code\", COUNT(\"documents\".\"id\") AS document_count\nFROM \"reference template types\"\nLEFT JOIN \"templates\" ON \"reference template types\".\"id\" = \"templates\".\"type_id\"\nLEFT JOIN \"documents\" ON \"templates\".\"id\" = \"documents\".\"template_id\"\nGROUP BY \"reference template types\".\"type_code\"",
+        "gold_sql": "SELECT T1.template_type_code ,  count(*) FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"reference template types\".\"type_code\", COUNT(\"documents\".\"id\") AS document_count\nFROM \"reference template types\"\nLEFT JOIN \"templates\" ON \"reference template types\".\"id\" = \"templates\".\"type_id\"\nLEFT JOIN \"documents\" ON \"templates\".\"id\" = \"documents\".\"template_id\"\nGROUP BY \"reference template types\".\"type_code\"",
+          "errors": [
+            "Column 'documents\".\"id' not found in schema. Available columns: []...",
+            "Column 'AS document_count' not found in schema. Available columns: []...",
+            "Column '\"reference template types\".\"type_code\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'documents\".\"id' not found in schema. Available columns: []...",
+                "Column '\"reference template types\".\"type_code\"' not found in schema. Available columns: []...",
+                "Column 'AS document_count' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "documents\".\"id",
+                  "\"reference template types\".\"type_code\"",
+                  "AS document_count"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What languages are only used by a single country with a republic government?",
+        "generated_sql": "SELECT \"countrylanguage\".\"Language\"\nFROM \"countrylanguage\"\nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\"\nWHERE \"country\".\"GovernmentForm\" = 'Republic'\nGROUP BY \"countrylanguage\".\"Language\"\nHAVING COUNT(DISTINCT \"country\".\"Code\") = 1",
+        "gold_sql": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.GovernmentForm  =  \"Republic\" GROUP BY T2.Language HAVING COUNT(*)  =  1",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"countrylanguage\".\"Language\"\nFROM \"countrylanguage\"\nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\"\nWHERE \"country\".\"GovernmentForm\" = 'Republic'\nGROUP BY \"countrylanguage\".\"Language\"\nHAVING COUNT(DISTINCT \"country\".\"Code\") = 1",
+          "errors": [
+            "Column '\"countrylanguage\".\"Language\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"countrylanguage\".\"Language\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"countrylanguage\".\"Language\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the average ages of losers and winners across matches?",
+        "generated_sql": "SELECT \n    AVG(CASE WHEN \"matches\".\"winner_id\" = \"players\".\"id\" THEN \"players\".\"age\" END) AS \"average_winner_age\",\n    AVG(CASE WHEN \"matches\".\"loser_id\" = \"players\".\"id\" THEN \"players\".\"age\" END) AS \"average_loser_age\"\nFROM \n    \"matches\"\nJOIN \n    \"players\" ON \"matches\".\"winner_id\" = \"players\".\"id\" OR \"matches\".\"loser_id\" = \"players\".\"id\"",
+        "gold_sql": "SELECT avg(loser_age) ,  avg(winner_age) FROM matches",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \n    AVG(CASE WHEN \"matches\".\"winner_id\" = \"players\".\"id\" THEN \"players\".\"age\" END) AS \"average_winner_age\",\n    AVG(CASE WHEN \"matches\".\"loser_id\" = \"players\".\"id\" THEN \"players\".\"age\" END) AS \"average_loser_age\"\nFROM \n    \"matches\"\nJOIN \n    \"players\" ON \"matches\".\"winner_id\" = \"players\".\"id\" OR \"matches\".\"loser_id\" = \"players\".\"id\"",
+          "errors": [
+            "Column 'CASE WHEN \"matches\".\"loser_id\" = \"players\".\"id\" THEN \"players\".\"age\" END' not found in schema. Available columns: []...",
+            "Column 'AS \"average_winner_age\"' not found in schema. Available columns: []...",
+            "Column 'CASE WHEN \"matches\".\"winner_id\" = \"players\".\"id\" THEN \"players\".\"age\" END' not found in schema. Available columns: []...",
+            "Column 'AS \"average_loser_age\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "Aggregation function used with non-aggregated columns. Consider using GROUP BY."
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'AS \"average_winner_age\"' not found in schema. Available columns: []...",
+                "Column 'AS \"average_loser_age\"' not found in schema. Available columns: []...",
+                "Column 'CASE WHEN \"matches\".\"loser_id\" = \"players\".\"id\" THEN \"players\".\"age\" END' not found in schema. Available columns: []...",
+                "Column 'CASE WHEN \"matches\".\"winner_id\" = \"players\".\"id\" THEN \"players\".\"age\" END' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "AS \"average_winner_age\"",
+                  "AS \"average_loser_age\"",
+                  "CASE WHEN \"matches\".\"loser_id\" = \"players\".\"id\" THEN \"players\".\"age\" END",
+                  "CASE WHEN \"matches\".\"winner_id\" = \"players\".\"id\" THEN \"players\".\"age\" END"
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "Aggregation function used with non-aggregated columns. Consider using GROUP BY."
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Who is enrolled in a Bachelor degree program? List the first name, middle name, last name.",
+        "generated_sql": "SELECT \"students\".\"first name\", \"students\".\"middle name\", \"students\".\"last name\"\nFROM \"students\"\nJOIN \"degree programs\" ON \"students\".\"degree program id\" = \"degree programs\".\"id\"\nWHERE \"degree programs\".\"name\" LIKE 'Bachelor%'",
+        "gold_sql": "SELECT DISTINCT T1.first_name ,  T1.middle_name ,  T1.last_name FROM Students AS T1 JOIN Student_Enrolment AS T2 ON T1.student_id  =  T2.student_id JOIN Degree_Programs AS T3 ON T2.degree_program_id  =  T3.degree_program_id WHERE T3.degree_summary_name  =  'Bachelor'",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"students\".\"first name\", \"students\".\"middle name\", \"students\".\"last name\"\nFROM \"students\"\nJOIN \"degree programs\" ON \"students\".\"degree program id\" = \"degree programs\".\"id\"\nWHERE \"degree programs\".\"name\" LIKE 'Bachelor%'",
+          "errors": [
+            "Column '\"students\".\"middle name\"' not found in schema. Available columns: []...",
+            "Column '\"students\".\"first name\"' not found in schema. Available columns: []...",
+            "Column '\"students\".\"last name\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"students\".\"last name\"' not found in schema. Available columns: []...",
+                "Column '\"students\".\"middle name\"' not found in schema. Available columns: []...",
+                "Column '\"students\".\"first name\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"students\".\"last name\"",
+                  "\"students\".\"middle name\"",
+                  "\"students\".\"first name\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What is the code of airport that has fewest number of flights?",
+        "generated_sql": "SELECT \"airport_code\" FROM airports JOIN flights ON \"airport_code\" = \"origin_airport\" OR \"airport_code\" = \"dest_airport\" GROUP BY \"airport_code\" ORDER BY COUNT(*) ASC LIMIT 1",
+        "gold_sql": "SELECT T1.AirportCode FROM AIRPORTS AS T1 JOIN FLIGHTS AS T2 ON T1.AirportCode  =  T2.DestAirport OR T1.AirportCode  =  T2.SourceAirport GROUP BY T1.AirportCode ORDER BY count(*) LIMIT 1",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"airport_code\" FROM airports JOIN flights ON \"airport_code\" = \"origin_airport\" OR \"airport_code\" = \"dest_airport\" GROUP BY \"airport_code\" ORDER BY COUNT(*) ASC LIMIT 1",
+          "errors": [
+            "Column '\"airport_code\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "ORDER BY column 'COUNT(*)' may be invalid"
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"airport_code\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "FLIGHTS",
+                  "AIRPORTS"
+                ],
+                "columns_found": [
+                  "\"airport_code\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "ORDER BY column 'COUNT(*)' may be invalid"
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What are the locations and names of all stations with capacity between 5000 and 10000?",
+        "generated_sql": "SELECT \"location\", \"name\" FROM stadium WHERE \"capacity\" BETWEEN 5000 AND 10000",
+        "gold_sql": "SELECT LOCATION ,  name FROM stadium WHERE capacity BETWEEN 5000 AND 10000",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"location\", \"name\" FROM stadium WHERE \"capacity\" BETWEEN 5000 AND 10000",
+          "errors": [
+            "Column '\"location\"' not found in schema. Available columns: []...",
+            "Column '\"name\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"name\"' not found in schema. Available columns: []...",
+                "Column '\"location\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "STADIUM"
+                ],
+                "columns_found": [
+                  "\"name\"",
+                  "\"location\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Which languages are spoken by only one country in republic governments?",
+        "generated_sql": "SELECT \"countrylanguage\".\"Language\"\nFROM \"countrylanguage\"\nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\"\nWHERE \"country\".\"GovernmentForm\" = 'Republic'\nGROUP BY \"countrylanguage\".\"Language\"\nHAVING COUNT(DISTINCT \"countrylanguage\".\"CountryCode\") = 1",
+        "gold_sql": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.GovernmentForm  =  \"Republic\" GROUP BY T2.Language HAVING COUNT(*)  =  1",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"countrylanguage\".\"Language\"\nFROM \"countrylanguage\"\nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\"\nWHERE \"country\".\"GovernmentForm\" = 'Republic'\nGROUP BY \"countrylanguage\".\"Language\"\nHAVING COUNT(DISTINCT \"countrylanguage\".\"CountryCode\") = 1",
+          "errors": [
+            "Column '\"countrylanguage\".\"Language\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"countrylanguage\".\"Language\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"countrylanguage\".\"Language\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Give the names of countries with English and French as official languages.",
+        "generated_sql": "SELECT DISTINCT \"country\".\"Name\"\nFROM \"country\"\nJOIN \"countrylanguage\" AS cl1 ON \"country\".\"Code\" = cl1.\"CountryCode\"\nJOIN \"countrylanguage\" AS cl2 ON \"country\".\"Code\" = cl2.\"CountryCode\"\nWHERE cl1.\"Language\" = 'English' AND cl1.\"IsOfficial\" = 'T'\nAND cl2.\"Language\" = 'French' AND cl2.\"IsOfficial\" = 'T'",
+        "gold_sql": "SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"English\" AND T2.IsOfficial  =  \"T\" INTERSECT SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"French\" AND T2.IsOfficial  =  \"T\"",
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT DISTINCT \"country\".\"Name\"\nFROM \"country\"\nJOIN \"countrylanguage\" AS cl1 ON \"country\".\"Code\" = cl1.\"CountryCode\"\nJOIN \"countrylanguage\" AS cl2 ON \"country\".\"Code\" = cl2.\"CountryCode\"\nWHERE cl1.\"Language\" = 'English' AND cl1.\"IsOfficial\" = 'T'\nAND cl2.\"Language\" = 'French' AND cl2.\"IsOfficial\" = 'T'",
+          "errors": [
+            "Column 'DISTINCT \"country\".\"Name\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column 'DISTINCT \"country\".\"Name\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "DISTINCT \"country\".\"Name\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Whose permanent address is different from his or her current address? List his or her first name.",
+        "generated_sql": "SELECT \"first name\" \nFROM students \nWHERE \"permanent address\" <> \"current address\"",
+        "gold_sql": "SELECT first_name FROM Students WHERE current_address_id != permanent_address_id",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"first name\" \nFROM students \nWHERE \"permanent address\" <> \"current address\"",
+          "errors": [
+            "Column '\"first name\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"first name\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [
+                  "STUDENTS"
+                ],
+                "columns_found": [
+                  "\"first name\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "What major is every student who does not own a cat as a pet, and also how old are they?",
+        "generated_sql": "SELECT \"student\".\"major\", \"student\".\"age\"\nFROM \"student\"\nLEFT JOIN \"has pet\" ON \"student\".\"id\" = \"has pet\".\"student_id\"\nLEFT JOIN \"pets\" ON \"has pet\".\"pet_id\" = \"pets\".\"id\"\nWHERE \"pets\".\"type\" IS NULL OR \"pets\".\"type\" != 'cat'",
+        "gold_sql": "SELECT major ,  age FROM student WHERE stuid NOT IN (SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat')",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"student\".\"major\", \"student\".\"age\"\nFROM \"student\"\nLEFT JOIN \"has pet\" ON \"student\".\"id\" = \"has pet\".\"student_id\"\nLEFT JOIN \"pets\" ON \"has pet\".\"pet_id\" = \"pets\".\"id\"\nWHERE \"pets\".\"type\" IS NULL OR \"pets\".\"type\" != 'cat'",
+          "errors": [
+            "Column '\"student\".\"age\"' not found in schema. Available columns: []...",
+            "Column '\"student\".\"major\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"student\".\"major\"' not found in schema. Available columns: []...",
+                "Column '\"student\".\"age\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"student\".\"major\"",
+                  "\"student\".\"age\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      },
+      {
+        "question": "Find the names of the visitors whose membership level is higher than 4, and order the results by the level from high to low.",
+        "generated_sql": "SELECT \"name\" \nFROM \"customer\" \nWHERE \"membership_level\" > 4 \nORDER BY \"membership_level\" DESC",
+        "gold_sql": "SELECT name FROM visitor WHERE Level_of_membership  >  4 ORDER BY Level_of_membership DESC",
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "verification": {
+          "safe_to_execute": false,
+          "status": "UNSAFE",
+          "repaired_sql": "SELECT \"name\" \nFROM \"customer\" \nWHERE \"membership_level\" > 4 \nORDER BY \"membership_level\" DESC",
+          "errors": [
+            "Column '\"name\"' not found in schema. Available columns: []..."
+          ],
+          "warnings": [
+            "ORDER BY column '\"membership_level\"' may be invalid"
+          ],
+          "validation_results": {
+            "schema": {
+              "valid": false,
+              "errors": [
+                "Column '\"name\"' not found in schema. Available columns: []..."
+              ],
+              "warnings": [],
+              "details": {
+                "tables_valid": true,
+                "columns_valid": false,
+                "types_valid": true,
+                "operations_valid": true
+              },
+              "metadata": {
+                "tables_found": [],
+                "columns_found": [
+                  "\"name\""
+                ],
+                "operation_type": "SELECT"
+              }
+            },
+            "constraints": {
+              "valid": true,
+              "violations": [],
+              "warnings": [
+                "ORDER BY column '\"membership_level\"' may be invalid"
+              ],
+              "details": {
+                "operator_compatibility": true,
+                "aggregation_correctness": true,
+                "logical_constraints": true,
+                "structure_valid": true
+              }
+            }
+          },
+          "repair_applied": false,
+          "fixes_applied": []
+        },
+        "status": "success"
+      }
+    ],
+    "metrics": {
+      "execution_accuracy": 0.5,
+      "exact_match": 0.05,
+      "safety_violations_prevented": 0,
+      "auto_repair_success": 20,
+      "total": 20,
+      "successful": 20,
+      "failed": 0
+    }
+  }
+}

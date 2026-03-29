@@ -1,0 +1,1237 @@
+{
+  "timestamp": "20260301_192422",
+  "n_samples": 20,
+  "results": {
+    "spider_model3": {
+      "model": "Model 3 (Baseline GPT-4)",
+      "dataset": "spider",
+      "n_samples": 20,
+      "queries": [
+        {
+          "question": "Return the names of friends of the high school student Kyle.",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Return the first name, last name and email of the owners living in a state whose name contains the substring 'North'.",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "List the most common hometown of teachers.",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "How many different degrees are offered?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "List document IDs, document names, and document descriptions for all documents.",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "List the first and last name of all players in the order of birth date.",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "List the number of different series names and contents in the TV Channel table.",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "How many poker players are there?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Find the average age of the dogs who went through treatments.",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Return the names of the 3 countries with the fewest people.",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What are the regions that use English or Dutch?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Find the make and production time of the cars that were produced in the earliest year?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "How many dog pets are raised by female students?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Which country does Airline \"JetBlue Airways\" belong to?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What are the email, cell phone and home phone of each professional?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What are the names of the teachers whose hometown is not `` Little Lever Urban District '' ?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the average rank for winners in all matches?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Which states have both owners and professionals living there?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Return the template type code of the template that is used by a document named Data base.",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What are the arriving date and the departing date of the dogs who have gone through a treatment?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        }
+      ],
+      "metrics": {
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "total": 20,
+        "successful": 0,
+        "failed": 20
+      }
+    },
+    "spider_model1": {
+      "model": "Model 1 (GPT-4 + SafeSQL)",
+      "dataset": "spider",
+      "n_samples": 20,
+      "queries": [
+        {
+          "question": "Return the names of friends of the high school student Kyle.",
+          "generated_sql": "SELECT \"high schooler\".name \nFROM \"high schooler\" \nJOIN \"friend\" ON \"high schooler\".id = \"friend\".friend_id \nWHERE \"friend\".student_id = (SELECT id FROM \"high schooler\" WHERE name = 'Kyle')",
+          "gold_sql": "SELECT T3.name FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id JOIN Highschooler AS T3 ON T1.friend_id  =  T3.id WHERE T2.name  =  \"Kyle\"",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"high schooler\".name \nFROM \"high schooler\" \nJOIN \"friend\" ON \"high schooler\".id = \"friend\".friend_id \nWHERE \"friend\".student_id = (SELECT id FROM \"high schooler\" WHERE name = 'Kyle')",
+            "errors": [
+              "Column '\"high schooler\".name' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"high schooler\".name' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"high schooler\".name"
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Return the first name, last name and email of the owners living in a state whose name contains the substring 'North'.",
+          "generated_sql": "SELECT \"first name\", \"last name\", \"email\" \nFROM owners \nWHERE \"state\" LIKE '%North%'",
+          "gold_sql": "SELECT first_name ,  last_name ,  email_address FROM Owners WHERE state LIKE '%North%'",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"first name\", \"last name\", \"email\" \nFROM owners \nWHERE \"state\" LIKE '%North%'",
+            "errors": [
+              "Column '\"first name\"' not found in schema. Available columns: []...",
+              "Column '\"email\"' not found in schema. Available columns: []...",
+              "Column '\"last name\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"last name\"' not found in schema. Available columns: []...",
+                  "Column '\"first name\"' not found in schema. Available columns: []...",
+                  "Column '\"email\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "OWNERS"
+                  ],
+                  "columns_found": [
+                    "\"last name\"",
+                    "\"first name\"",
+                    "\"email\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "List the most common hometown of teachers.",
+          "generated_sql": "SELECT \"hometown\" FROM teacher GROUP BY \"hometown\" ORDER BY COUNT(*) DESC LIMIT 1",
+          "gold_sql": "SELECT Hometown FROM teacher GROUP BY Hometown ORDER BY COUNT(*) DESC LIMIT 1",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"hometown\" FROM teacher GROUP BY \"hometown\" ORDER BY COUNT(*) DESC LIMIT 1",
+            "errors": [
+              "Column '\"hometown\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [
+              "ORDER BY column 'COUNT(*)' may be invalid"
+            ],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"hometown\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "TEACHER"
+                  ],
+                  "columns_found": [
+                    "\"hometown\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [
+                  "ORDER BY column 'COUNT(*)' may be invalid"
+                ],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "How many different degrees are offered?",
+          "generated_sql": "SELECT COUNT(DISTINCT \"degree programs\".\"degree_name\") FROM \"degree programs\"",
+          "gold_sql": "SELECT count(DISTINCT degree_summary_name) FROM Degree_Programs",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT COUNT(DISTINCT \"degree programs\".\"degree_name\") FROM \"degree programs\"",
+            "errors": [
+              "Column 'DISTINCT \"degree programs\".\"degree_name' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column 'DISTINCT \"degree programs\".\"degree_name' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "DISTINCT \"degree programs\".\"degree_name"
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "List document IDs, document names, and document descriptions for all documents.",
+          "generated_sql": "SELECT \"document_id\", \"document_name\", \"document_description\" FROM \"documents\"",
+          "gold_sql": "SELECT document_id ,  document_name ,  document_description FROM Documents",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"document_id\", \"document_name\", \"document_description\" FROM \"documents\"",
+            "errors": [
+              "Column '\"document_description\"' not found in schema. Available columns: []...",
+              "Column '\"document_id\"' not found in schema. Available columns: []...",
+              "Column '\"document_name\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"document_id\"' not found in schema. Available columns: []...",
+                  "Column '\"document_name\"' not found in schema. Available columns: []...",
+                  "Column '\"document_description\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"document_id\"",
+                    "\"document_name\"",
+                    "\"document_description\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "List the first and last name of all players in the order of birth date.",
+          "generated_sql": "SELECT \"first_name\", \"last_name\" FROM players ORDER BY \"birth_date\"",
+          "gold_sql": "SELECT first_name ,  last_name FROM players ORDER BY birth_date",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"first_name\", \"last_name\" FROM players ORDER BY \"birth_date\"",
+            "errors": [
+              "Column '\"last_name\"' not found in schema. Available columns: []...",
+              "Column '\"first_name\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [
+              "ORDER BY column '\"birth_date\"' may be invalid"
+            ],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"last_name\"' not found in schema. Available columns: []...",
+                  "Column '\"first_name\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "PLAYERS"
+                  ],
+                  "columns_found": [
+                    "\"last_name\"",
+                    "\"first_name\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [
+                  "ORDER BY column '\"birth_date\"' may be invalid"
+                ],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "List the number of different series names and contents in the TV Channel table.",
+          "generated_sql": "SELECT COUNT(DISTINCT \"series name\"), COUNT(DISTINCT \"content\") FROM \"tv channel\"",
+          "gold_sql": "SELECT count(DISTINCT series_name) ,  count(DISTINCT content) FROM TV_Channel;",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT COUNT(DISTINCT \"series name\"), COUNT(DISTINCT \"content\") FROM \"tv channel\"",
+            "errors": [
+              "Column 'DISTINCT \"content' not found in schema. Available columns: []...",
+              "Column 'DISTINCT \"series name' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column 'DISTINCT \"content' not found in schema. Available columns: []...",
+                  "Column 'DISTINCT \"series name' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "DISTINCT \"content",
+                    "DISTINCT \"series name"
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "How many poker players are there?",
+          "generated_sql": "SELECT COUNT(*) FROM \"poker player\"",
+          "gold_sql": "SELECT count(*) FROM poker_player",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT COUNT(*) FROM \"poker player\"",
+            "errors": [
+              "Column '*' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '*' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "*"
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Find the average age of the dogs who went through treatments.",
+          "generated_sql": "SELECT AVG(\"dogs\".\"age\") \nFROM \"dogs\" \nJOIN \"treatments\" ON \"dogs\".\"id\" = \"treatments\".\"dog_id\"",
+          "gold_sql": "SELECT avg(age) FROM Dogs WHERE dog_id IN ( SELECT dog_id FROM Treatments )",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT AVG(\"dogs\".\"age\") \nFROM \"dogs\" \nJOIN \"treatments\" ON \"dogs\".\"id\" = \"treatments\".\"dog_id\"",
+            "errors": [
+              "Column 'dogs\".\"age' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column 'dogs\".\"age' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "dogs\".\"age"
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Return the names of the 3 countries with the fewest people.",
+          "generated_sql": "SELECT \"name\" FROM \"country\" ORDER BY \"population\" ASC LIMIT 3",
+          "gold_sql": "SELECT Name FROM country ORDER BY Population ASC LIMIT 3",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"name\" FROM \"country\" ORDER BY \"population\" ASC LIMIT 3",
+            "errors": [
+              "Column '\"name\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [
+              "ORDER BY column '\"population\"' may be invalid"
+            ],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"name\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"name\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [
+                  "ORDER BY column '\"population\"' may be invalid"
+                ],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "What are the regions that use English or Dutch?",
+          "generated_sql": "SELECT DISTINCT \"country\".\"Region\" \nFROM \"country\"\nJOIN \"countrylanguage\" ON \"country\".\"Code\" = \"countrylanguage\".\"CountryCode\"\nWHERE \"countrylanguage\".\"Language\" IN ('English', 'Dutch')",
+          "gold_sql": "SELECT DISTINCT T1.Region FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"English\" OR T2.Language  =  \"Dutch\"",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT DISTINCT \"country\".\"Region\" \nFROM \"country\"\nJOIN \"countrylanguage\" ON \"country\".\"Code\" = \"countrylanguage\".\"CountryCode\"\nWHERE \"countrylanguage\".\"Language\" IN ('English', 'Dutch')",
+            "errors": [
+              "Column 'DISTINCT \"country\".\"Region\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column 'DISTINCT \"country\".\"Region\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "DISTINCT \"country\".\"Region\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Find the make and production time of the cars that were produced in the earliest year?",
+          "generated_sql": "SELECT \"car makers\".\"make\", \"cars data\".\"production_time\"\nFROM \"car makers\"\nJOIN \"cars data\" ON \"car makers\".\"id\" = \"cars data\".\"maker_id\"\nWHERE \"cars data\".\"production_year\" = (\n    SELECT MIN(\"production_year\") FROM \"cars data\"\n)",
+          "gold_sql": "SELECT T2.Make ,  T1.Year FROM CARS_DATA AS T1 JOIN CAR_NAMES AS T2 ON T1.Id  =  T2.MakeId WHERE T1.Year  =  (SELECT min(YEAR) FROM CARS_DATA);",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"car makers\".\"make\", \"cars data\".\"production_time\"\nFROM \"car makers\"\nJOIN \"cars data\" ON \"car makers\".\"id\" = \"cars data\".\"maker_id\"\nWHERE \"cars data\".\"production_year\" = (\n    SELECT MIN(\"production_year\") FROM \"cars data\"\n)",
+            "errors": [
+              "Column '\"cars data\".\"production_time\"' not found in schema. Available columns: []...",
+              "Column '\"car makers\".\"make\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [
+              "Aggregation function used with non-aggregated columns. Consider using GROUP BY."
+            ],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"car makers\".\"make\"' not found in schema. Available columns: []...",
+                  "Column '\"cars data\".\"production_time\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"car makers\".\"make\"",
+                    "\"cars data\".\"production_time\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [
+                  "Aggregation function used with non-aggregated columns. Consider using GROUP BY."
+                ],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "How many dog pets are raised by female students?",
+          "generated_sql": "SELECT COUNT(*) \nFROM \"student\" \nJOIN \"has pet\" ON \"student\".id = \"has pet\".student_id \nJOIN \"pets\" ON \"has pet\".pet_id = \"pets\".id \nWHERE \"student\".gender = 'female' AND \"pets\".type = 'dog'",
+          "gold_sql": "SELECT count(*) FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T2.petid  =  T3.petid WHERE T1.sex  =  'F' AND T3.pettype  =  'dog'",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT COUNT(*) \nFROM \"student\" \nJOIN \"has pet\" ON \"student\".id = \"has pet\".student_id \nJOIN \"pets\" ON \"has pet\".pet_id = \"pets\".id \nWHERE \"student\".gender = 'female' AND \"pets\".type = 'dog'",
+            "errors": [
+              "Column '*' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '*' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "*"
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Which country does Airline \"JetBlue Airways\" belong to?",
+          "generated_sql": "SELECT \"Country\" FROM airlines WHERE \"Name\" = 'JetBlue Airways'",
+          "gold_sql": "SELECT Country FROM AIRLINES WHERE Airline  =  \"JetBlue Airways\"",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"Country\" FROM airlines WHERE \"Name\" = 'JetBlue Airways'",
+            "errors": [
+              "Column '\"Country\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"Country\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "AIRLINES"
+                  ],
+                  "columns_found": [
+                    "\"Country\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "What are the email, cell phone and home phone of each professional?",
+          "generated_sql": "SELECT \"email\", \"cell phone\", \"home phone\" FROM professionals",
+          "gold_sql": "SELECT email_address ,  cell_number ,  home_phone FROM professionals",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"email\", \"cell phone\", \"home phone\" FROM professionals",
+            "errors": [
+              "Column '\"email\"' not found in schema. Available columns: []...",
+              "Column '\"cell phone\"' not found in schema. Available columns: []...",
+              "Column '\"home phone\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"home phone\"' not found in schema. Available columns: []...",
+                  "Column '\"cell phone\"' not found in schema. Available columns: []...",
+                  "Column '\"email\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "PROFESSIONALS"
+                  ],
+                  "columns_found": [
+                    "\"home phone\"",
+                    "\"cell phone\"",
+                    "\"email\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "What are the names of the teachers whose hometown is not `` Little Lever Urban District '' ?",
+          "generated_sql": "SELECT \"name\" FROM teacher WHERE \"hometown\" <> 'Little Lever Urban District'",
+          "gold_sql": "select name from teacher where hometown != \"little lever urban district\"",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"name\" FROM teacher WHERE \"hometown\" <> 'Little Lever Urban District'",
+            "errors": [
+              "Column '\"name\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"name\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "TEACHER"
+                  ],
+                  "columns_found": [
+                    "\"name\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "What is the average rank for winners in all matches?",
+          "generated_sql": "SELECT AVG(\"rankings\".\"rank\") \nFROM \"matches\" \nJOIN \"rankings\" ON \"matches\".\"winner_id\" = \"rankings\".\"player_id\"",
+          "gold_sql": "SELECT avg(winner_rank) FROM matches",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT AVG(\"rankings\".\"rank\") \nFROM \"matches\" \nJOIN \"rankings\" ON \"matches\".\"winner_id\" = \"rankings\".\"player_id\"",
+            "errors": [
+              "Column 'rankings\".\"rank' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column 'rankings\".\"rank' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "rankings\".\"rank"
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Which states have both owners and professionals living there?",
+          "generated_sql": "SELECT DISTINCT o.state\nFROM owners o\nJOIN professionals p ON o.state = p.state",
+          "gold_sql": "SELECT state FROM Owners INTERSECT SELECT state FROM Professionals",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT DISTINCT o.state\nFROM owners o\nJOIN professionals p ON o.state = p.state",
+            "errors": [
+              "Column 'DISTINCT o.state' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column 'DISTINCT o.state' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "PROFESSIONALS",
+                    "OWNERS"
+                  ],
+                  "columns_found": [
+                    "DISTINCT o.state"
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Return the template type code of the template that is used by a document named Data base.",
+          "generated_sql": "SELECT \"reference template types\".\"template type code\"\nFROM \"documents\"\nJOIN \"templates\" ON \"documents\".\"template id\" = \"templates\".\"template id\"\nJOIN \"reference template types\" ON \"templates\".\"template type id\" = \"reference template types\".\"template type id\"\nWHERE \"documents\".\"name\" = 'Data base'",
+          "gold_sql": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id WHERE T2.document_name  =  \"Data base\"",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"reference template types\".\"template type code\"\nFROM \"documents\"\nJOIN \"templates\" ON \"documents\".\"template id\" = \"templates\".\"template id\"\nJOIN \"reference template types\" ON \"templates\".\"template type id\" = \"reference template types\".\"template type id\"\nWHERE \"documents\".\"name\" = 'Data base'",
+            "errors": [
+              "Column '\"reference template types\".\"template type code\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"reference template types\".\"template type code\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"reference template types\".\"template type code\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "What are the arriving date and the departing date of the dogs who have gone through a treatment?",
+          "generated_sql": "SELECT \"dogs\".\"arriving_date\", \"dogs\".\"departing_date\"\nFROM \"dogs\"\nJOIN \"treatments\" ON \"dogs\".\"id\" = \"treatments\".\"dog_id\"",
+          "gold_sql": "SELECT DISTINCT T1.date_arrived ,  T1.date_departed FROM Dogs AS T1 JOIN Treatments AS T2 ON T1.dog_id  =  T2.dog_id",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"dogs\".\"arriving_date\", \"dogs\".\"departing_date\"\nFROM \"dogs\"\nJOIN \"treatments\" ON \"dogs\".\"id\" = \"treatments\".\"dog_id\"",
+            "errors": [
+              "Column '\"dogs\".\"departing_date\"' not found in schema. Available columns: []...",
+              "Column '\"dogs\".\"arriving_date\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"dogs\".\"departing_date\"' not found in schema. Available columns: []...",
+                  "Column '\"dogs\".\"arriving_date\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"dogs\".\"departing_date\"",
+                    "\"dogs\".\"arriving_date\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        }
+      ],
+      "metrics": {
+        "execution_accuracy": 0.25,
+        "exact_match": 0.0,
+        "safety_violations_prevented": 0,
+        "auto_repair_success": 20,
+        "total": 20,
+        "successful": 20,
+        "failed": 0
+      }
+    }
+  }
+}

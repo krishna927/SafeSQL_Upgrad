@@ -1,0 +1,536 @@
+{
+  "timestamp": "20260301_213956",
+  "n_samples": 50,
+  "results": {
+    "wikisql_model3": {
+      "model": "Model 3 (Baseline GPT-4)",
+      "dataset": "wikisql",
+      "n_samples": 50,
+      "queries": [
+        {
+          "question": "What position does the player who played for butler cc (ks) play?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "How many schools did player number 3 play at?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What school did player number 21 play for?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Who is the player that wears number 42?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What player played guard for toronto in 1996-97?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Who are all of the players on the Westchester High School club team?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What school/club team is Amir Johnson on?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What are the total amount of numbers on the Toronto team in 2005-06?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What are the total number of positions on the Toronto team in 2006-07?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What are the nationality of the players on the Fresno State school/club team?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What school/club team is Trey Johnson on?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "When did Jacques Chirac stop being a G8 leader?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "When did the Prime Minister of Italy take office?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the English name of the country whose official native language is Dutch Papiamento?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What official or native languages are spoken in the country whose capital city is Canberra?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the local name given to the city of Canberra?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the local name given to the capital of Anguilla?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the English name given to the city of St. John's?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "How many capital cities does Australia have?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "The episode with production code 9abx02 was originally aired on what date?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the episode number that has production code 8abx15?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Name the minimum tiesplayed for 6 years",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the amount of trees, that require replacement when prevailing types, % is pine — 29.37 poplar — 26.12 acer negundo — 13.2?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the amount of trees, that require replacement when district is leninsky?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the district when the total amount of trees is smaller than 150817.6878461314 and amount of old trees is 1,928 (1.89%)?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the amount of trees, that require replacement when the district is motovilikhinsky?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the total amount of trees when district is leninsky?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the district when prevailing types, % is acer negundo — 30.22 tilia — 18.6 poplar — 15.23?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "When the value of \"since beginning of big 12\" is synonymous with its' category, what are the in Ames values?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "what's the u.s. open cup status for regular season of 4th, atlantic division ",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "how many division  did not qualify for u.s. open cup in 2003",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "which round is u.s. open cup division semifinals",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "what are all the playoffs for regular season is 1st, atlantic division",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "what are all the playoffs for u.s. open cup in 1st round",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "what is the total number of 2nd leg where aggregate is 7-2",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": " what's the aggregate where 1st leg is 3–2",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": " what's the competition where aggregate is 4–7",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": " what's the competition where 1st leg is 4-1 (h)",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "what is the total number of round where opponents is haugar",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": " what's the 1st leg where opponents is galatasaray",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What is the highest Rd that Tom Sneva had the pole position in?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "How many winning drivers were there in the race that had a fastest lap time of 56.920?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "How many reports are there in the race that Forsythe Racing won and Teo Fabi had the pole position in?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Which Rd took place at the Indianapolis 500?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Which teams won when Bobby Rahal was their winning driver?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What was the fastest lap time in the Escort Radar Warning 200?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What report was there for the porsche north america?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "What rnds were there for the phoenix international raceway?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "Who was the pole position for the rnd equalling 12?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        },
+        {
+          "question": "How many reports were the for the cleveland burke lakefront airport circut?",
+          "error": "name 'generated_sql' is not defined",
+          "status": "failed"
+        }
+      ],
+      "metrics": {
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "total": 50,
+        "successful": 0,
+        "failed": 50
+      }
+    },
+    "wikisql_model1": {
+      "model": "Model 1 (GPT-4 + SafeSQL)",
+      "dataset": "wikisql",
+      "n_samples": 50,
+      "queries": [
+        {
+          "question": "What position does the player who played for butler cc (ks) play?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "How many schools did player number 3 play at?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What school did player number 21 play for?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "Who is the player that wears number 42?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What player played guard for toronto in 1996-97?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "Who are all of the players on the Westchester High School club team?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What school/club team is Amir Johnson on?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What are the total amount of numbers on the Toronto team in 2005-06?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What are the total number of positions on the Toronto team in 2006-07?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What are the nationality of the players on the Fresno State school/club team?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What school/club team is Trey Johnson on?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "When did Jacques Chirac stop being a G8 leader?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "When did the Prime Minister of Italy take office?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the English name of the country whose official native language is Dutch Papiamento?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What official or native languages are spoken in the country whose capital city is Canberra?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the local name given to the city of Canberra?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the local name given to the capital of Anguilla?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the English name given to the city of St. John's?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "How many capital cities does Australia have?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "The episode with production code 9abx02 was originally aired on what date?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the episode number that has production code 8abx15?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "Name the minimum tiesplayed for 6 years",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the amount of trees, that require replacement when prevailing types, % is pine — 29.37 poplar — 26.12 acer negundo — 13.2?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the amount of trees, that require replacement when district is leninsky?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the district when the total amount of trees is smaller than 150817.6878461314 and amount of old trees is 1,928 (1.89%)?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the amount of trees, that require replacement when the district is motovilikhinsky?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the total amount of trees when district is leninsky?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the district when prevailing types, % is acer negundo — 30.22 tilia — 18.6 poplar — 15.23?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "When the value of \"since beginning of big 12\" is synonymous with its' category, what are the in Ames values?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "what's the u.s. open cup status for regular season of 4th, atlantic division ",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "how many division  did not qualify for u.s. open cup in 2003",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "which round is u.s. open cup division semifinals",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "what are all the playoffs for regular season is 1st, atlantic division",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "what are all the playoffs for u.s. open cup in 1st round",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "what is the total number of 2nd leg where aggregate is 7-2",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": " what's the aggregate where 1st leg is 3–2",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": " what's the competition where aggregate is 4–7",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": " what's the competition where 1st leg is 4-1 (h)",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "what is the total number of round where opponents is haugar",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": " what's the 1st leg where opponents is galatasaray",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What is the highest Rd that Tom Sneva had the pole position in?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "How many winning drivers were there in the race that had a fastest lap time of 56.920?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "How many reports are there in the race that Forsythe Racing won and Teo Fabi had the pole position in?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "Which Rd took place at the Indianapolis 500?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "Which teams won when Bobby Rahal was their winning driver?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What was the fastest lap time in the Escort Radar Warning 200?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What report was there for the porsche north america?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "What rnds were there for the phoenix international raceway?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "Who was the pole position for the rnd equalling 12?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        },
+        {
+          "question": "How many reports were the for the cleveland burke lakefront airport circut?",
+          "error": "'Guardrails' object has no attribute 'apply'",
+          "status": "failed"
+        }
+      ],
+      "metrics": {
+        "execution_accuracy": 0.0,
+        "exact_match": 0.0,
+        "safety_violations_prevented": 0,
+        "auto_repair_success": 0,
+        "total": 50,
+        "successful": 0,
+        "failed": 50
+      }
+    }
+  }
+}

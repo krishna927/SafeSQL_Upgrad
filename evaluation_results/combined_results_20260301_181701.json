@@ -1,0 +1,683 @@
+{
+  "timestamp": "20260301_181701",
+  "n_samples": 10,
+  "results": {
+    "spider_model3": {
+      "model": "Model 3 (Baseline GPT-4)",
+      "dataset": "spider",
+      "n_samples": 10,
+      "queries": [
+        {
+          "question": "Which template type code is used by most number of documents?",
+          "generated_sql": "SELECT \"reference template types\".\"template type code\"\nFROM \"reference template types\"\nJOIN \"templates\" ON \"reference template types\".\"template type code\" = \"templates\".\"template type code\"\nJOIN \"documents\" ON \"templates\".\"template id\" = \"documents\".\"template id\"\nGROUP BY \"reference template types\".\"template type code\"\nORDER BY COUNT(\"documents\".\"document id\") DESC\nLIMIT 1",
+          "gold_sql": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code ORDER BY count(*) DESC LIMIT 1",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "status": "success"
+        },
+        {
+          "question": "Give the city and country for the Alton airport.",
+          "generated_sql": "SELECT \"City\", \"Country\" FROM airports WHERE \"Name\" = 'Alton'",
+          "gold_sql": "SELECT City ,  Country FROM AIRPORTS WHERE AirportName  =  \"Alton\"",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "status": "success"
+        },
+        {
+          "question": "Give the ids of documents that have between one and two paragraphs.",
+          "generated_sql": "SELECT d.\"id\"\nFROM documents d\nJOIN paragraphs p ON d.\"id\" = p.\"document_id\"\nGROUP BY d.\"id\"\nHAVING COUNT(p.\"id\") BETWEEN 1 AND 2",
+          "gold_sql": "SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*) BETWEEN 1 AND 2",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "status": "success"
+        },
+        {
+          "question": "What is the phone number of the man with the first name Timmothy and the last name Ward?",
+          "generated_sql": "SELECT \"phone number\" FROM \"students\" WHERE \"first name\" = 'Timmothy' AND \"last name\" = 'Ward'",
+          "gold_sql": "SELECT cell_mobile_number FROM Students WHERE first_name  =  'Timmothy' AND last_name  =  'Ward'",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "status": "success"
+        },
+        {
+          "question": "Which regions speak Dutch or English?",
+          "generated_sql": "SELECT DISTINCT \"country\".\"Region\" \nFROM \"countrylanguage\" \nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\" \nWHERE \"countrylanguage\".\"Language\" IN ('Dutch', 'English')",
+          "gold_sql": "SELECT DISTINCT T1.Region FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"English\" OR T2.Language  =  \"Dutch\"",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "status": "success"
+        },
+        {
+          "question": "For each hometown, how many teachers are there?",
+          "generated_sql": "SELECT \"hometown\", COUNT(*) AS \"number_of_teachers\" FROM teacher GROUP BY \"hometown\"",
+          "gold_sql": "SELECT Hometown ,  COUNT(*) FROM teacher GROUP BY Hometown",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "status": "success"
+        },
+        {
+          "question": "Which language is the most popular in Aruba?",
+          "generated_sql": "SELECT \"countrylanguage\".\"Language\" \nFROM \"countrylanguage\" \nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\" \nWHERE \"country\".\"Name\" = 'Aruba' \nORDER BY \"countrylanguage\".\"Percentage\" DESC \nLIMIT 1",
+          "gold_sql": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Name  =  \"Aruba\" ORDER BY Percentage DESC LIMIT 1",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "status": "success"
+        },
+        {
+          "question": "For each continent, list its id, name, and how many countries it has?",
+          "generated_sql": "SELECT \"continents\".\"id\", \"continents\".\"name\", COUNT(\"countries\".\"id\") AS \"country_count\"\nFROM \"continents\"\nLEFT JOIN \"countries\" ON \"continents\".\"id\" = \"countries\".\"continent_id\"\nGROUP BY \"continents\".\"id\", \"continents\".\"name\"",
+          "gold_sql": "SELECT T1.ContId ,  T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.Continent GROUP BY T1.ContId;",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "status": "success"
+        },
+        {
+          "question": "List the first and last name of all players who are left / L hand in the order of birth date.",
+          "generated_sql": "SELECT \"first_name\", \"last_name\" FROM players WHERE \"hand\" = 'L' ORDER BY \"birth_date\"",
+          "gold_sql": "SELECT first_name ,  last_name FROM players WHERE hand  =  'L' ORDER BY birth_date",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "status": "success"
+        },
+        {
+          "question": "Find the number of cartoons directed by each of the listed directors.",
+          "generated_sql": "SELECT \"director\", COUNT(*) AS \"number_of_cartoons\"\nFROM cartoon\nGROUP BY \"director\"",
+          "gold_sql": "SELECT count(*) ,  Directed_by FROM cartoon GROUP BY Directed_by",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "status": "success"
+        }
+      ],
+      "metrics": {
+        "execution_accuracy": 0.5,
+        "exact_match": 0.0,
+        "total": 10,
+        "successful": 10,
+        "failed": 0
+      }
+    },
+    "spider_model1": {
+      "model": "Model 1 (GPT-4 + SafeSQL)",
+      "dataset": "spider",
+      "n_samples": 10,
+      "queries": [
+        {
+          "question": "Which template type code is used by most number of documents?",
+          "generated_sql": "SELECT \"reference template types\".\"template type code\"\nFROM \"reference template types\"\nJOIN \"templates\" ON \"reference template types\".\"template type code\" = \"templates\".\"template type code\"\nJOIN \"documents\" ON \"templates\".\"template id\" = \"documents\".\"template id\"\nGROUP BY \"reference template types\".\"template type code\"\nORDER BY COUNT(\"documents\".\"document id\") DESC\nLIMIT 1",
+          "gold_sql": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code ORDER BY count(*) DESC LIMIT 1",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"reference template types\".\"template type code\"\nFROM \"reference template types\"\nJOIN \"templates\" ON \"reference template types\".\"template type code\" = \"templates\".\"template type code\"\nJOIN \"documents\" ON \"templates\".\"template id\" = \"documents\".\"template id\"\nGROUP BY \"reference template types\".\"template type code\"\nORDER BY COUNT(\"documents\".\"document id\") DESC\nLIMIT 1",
+            "errors": [
+              "Column '\"reference template types\".\"template type code\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [
+              "ORDER BY column 'COUNT(\"documents\".\"document' may be invalid"
+            ],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"reference template types\".\"template type code\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"reference template types\".\"template type code\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [
+                  "ORDER BY column 'COUNT(\"documents\".\"document' may be invalid"
+                ],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Give the city and country for the Alton airport.",
+          "generated_sql": "SELECT \"City\", \"Country\" FROM airports WHERE \"Name\" = 'Alton'",
+          "gold_sql": "SELECT City ,  Country FROM AIRPORTS WHERE AirportName  =  \"Alton\"",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"City\", \"Country\" FROM airports WHERE \"Name\" = 'Alton'",
+            "errors": [
+              "Column '\"City\"' not found in schema. Available columns: []...",
+              "Column '\"Country\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"Country\"' not found in schema. Available columns: []...",
+                  "Column '\"City\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "AIRPORTS"
+                  ],
+                  "columns_found": [
+                    "\"Country\"",
+                    "\"City\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Give the ids of documents that have between one and two paragraphs.",
+          "generated_sql": "SELECT \"documents\".\"id\"\nFROM \"documents\"\nJOIN \"paragraphs\" ON \"documents\".\"id\" = \"paragraphs\".\"document_id\"\nGROUP BY \"documents\".\"id\"\nHAVING COUNT(\"paragraphs\".\"id\") BETWEEN 1 AND 2",
+          "gold_sql": "SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*) BETWEEN 1 AND 2",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"documents\".\"id\"\nFROM \"documents\"\nJOIN \"paragraphs\" ON \"documents\".\"id\" = \"paragraphs\".\"document_id\"\nGROUP BY \"documents\".\"id\"\nHAVING COUNT(\"paragraphs\".\"id\") BETWEEN 1 AND 2",
+            "errors": [
+              "Column '\"documents\".\"id\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"documents\".\"id\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"documents\".\"id\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "What is the phone number of the man with the first name Timmothy and the last name Ward?",
+          "generated_sql": "SELECT \"phone number\" FROM \"students\" WHERE \"first name\" = 'Timmothy' AND \"last name\" = 'Ward'",
+          "gold_sql": "SELECT cell_mobile_number FROM Students WHERE first_name  =  'Timmothy' AND last_name  =  'Ward'",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"phone number\" FROM \"students\" WHERE \"first name\" = 'Timmothy' AND \"last name\" = 'Ward'",
+            "errors": [
+              "Column '\"phone number\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"phone number\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"phone number\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Which regions speak Dutch or English?",
+          "generated_sql": "SELECT DISTINCT \"country\".\"Region\" \nFROM \"countrylanguage\" \nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\" \nWHERE \"countrylanguage\".\"Language\" IN ('Dutch', 'English')",
+          "gold_sql": "SELECT DISTINCT T1.Region FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"English\" OR T2.Language  =  \"Dutch\"",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT DISTINCT \"country\".\"Region\" \nFROM \"countrylanguage\" \nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\" \nWHERE \"countrylanguage\".\"Language\" IN ('Dutch', 'English')",
+            "errors": [
+              "Column 'DISTINCT \"country\".\"Region\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column 'DISTINCT \"country\".\"Region\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "DISTINCT \"country\".\"Region\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "For each hometown, how many teachers are there?",
+          "generated_sql": "SELECT \"hometown\", COUNT(*) AS \"number_of_teachers\" FROM teacher GROUP BY \"hometown\"",
+          "gold_sql": "SELECT Hometown ,  COUNT(*) FROM teacher GROUP BY Hometown",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"hometown\", COUNT(*) AS \"number_of_teachers\" FROM teacher GROUP BY \"hometown\"",
+            "errors": [
+              "Column '*' not found in schema. Available columns: []...",
+              "Column 'AS \"number_of_teachers\"' not found in schema. Available columns: []...",
+              "Column '\"hometown\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"hometown\"' not found in schema. Available columns: []...",
+                  "Column '*' not found in schema. Available columns: []...",
+                  "Column 'AS \"number_of_teachers\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "TEACHER"
+                  ],
+                  "columns_found": [
+                    "\"hometown\"",
+                    "*",
+                    "AS \"number_of_teachers\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Which language is the most popular in Aruba?",
+          "generated_sql": "SELECT \"countrylanguage\".\"Language\" \nFROM \"countrylanguage\" \nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\" \nWHERE \"country\".\"Name\" = 'Aruba' \nORDER BY \"countrylanguage\".\"Percentage\" DESC \nLIMIT 1",
+          "gold_sql": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.Name  =  \"Aruba\" ORDER BY Percentage DESC LIMIT 1",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"countrylanguage\".\"Language\" \nFROM \"countrylanguage\" \nJOIN \"country\" ON \"countrylanguage\".\"CountryCode\" = \"country\".\"Code\" \nWHERE \"country\".\"Name\" = 'Aruba' \nORDER BY \"countrylanguage\".\"Percentage\" DESC \nLIMIT 1",
+            "errors": [
+              "Column '\"countrylanguage\".\"Language\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [
+              "ORDER BY column '\"countrylanguage\".\"Percentage\"' may be invalid"
+            ],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"countrylanguage\".\"Language\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "\"countrylanguage\".\"Language\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [
+                  "ORDER BY column '\"countrylanguage\".\"Percentage\"' may be invalid"
+                ],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "For each continent, list its id, name, and how many countries it has?",
+          "generated_sql": "SELECT \"continents\".\"id\", \"continents\".\"name\", COUNT(\"countries\".\"id\") AS \"country_count\"\nFROM \"continents\"\nLEFT JOIN \"countries\" ON \"continents\".\"id\" = \"countries\".\"continent_id\"\nGROUP BY \"continents\".\"id\", \"continents\".\"name\"",
+          "gold_sql": "SELECT T1.ContId ,  T1.Continent ,  count(*) FROM CONTINENTS AS T1 JOIN COUNTRIES AS T2 ON T1.ContId  =  T2.Continent GROUP BY T1.ContId;",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"continents\".\"id\", \"continents\".\"name\", COUNT(\"countries\".\"id\") AS \"country_count\"\nFROM \"continents\"\nLEFT JOIN \"countries\" ON \"continents\".\"id\" = \"countries\".\"continent_id\"\nGROUP BY \"continents\".\"id\", \"continents\".\"name\"",
+            "errors": [
+              "Column '\"continents\".\"id\"' not found in schema. Available columns: []...",
+              "Column 'countries\".\"id' not found in schema. Available columns: []...",
+              "Column '\"continents\".\"name\"' not found in schema. Available columns: []...",
+              "Column 'AS \"country_count\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column 'countries\".\"id' not found in schema. Available columns: []...",
+                  "Column '\"continents\".\"name\"' not found in schema. Available columns: []...",
+                  "Column 'AS \"country_count\"' not found in schema. Available columns: []...",
+                  "Column '\"continents\".\"id\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [],
+                  "columns_found": [
+                    "countries\".\"id",
+                    "\"continents\".\"name\"",
+                    "AS \"country_count\"",
+                    "\"continents\".\"id\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "List the first and last name of all players who are left / L hand in the order of birth date.",
+          "generated_sql": "SELECT \"first_name\", \"last_name\" FROM players WHERE \"hand\" = 'L' ORDER BY \"birth_date\"",
+          "gold_sql": "SELECT first_name ,  last_name FROM players WHERE hand  =  'L' ORDER BY birth_date",
+          "execution_accuracy": 1.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"first_name\", \"last_name\" FROM players WHERE \"hand\" = 'L' ORDER BY \"birth_date\"",
+            "errors": [
+              "Column '\"last_name\"' not found in schema. Available columns: []...",
+              "Column '\"first_name\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [
+              "ORDER BY column '\"birth_date\"' may be invalid"
+            ],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"last_name\"' not found in schema. Available columns: []...",
+                  "Column '\"first_name\"' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "PLAYERS"
+                  ],
+                  "columns_found": [
+                    "\"last_name\"",
+                    "\"first_name\""
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [
+                  "ORDER BY column '\"birth_date\"' may be invalid"
+                ],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        },
+        {
+          "question": "Find the number of cartoons directed by each of the listed directors.",
+          "generated_sql": "SELECT \"director\", COUNT(*) AS \"number_of_cartoons\"\nFROM cartoon\nGROUP BY \"director\"",
+          "gold_sql": "SELECT count(*) ,  Directed_by FROM cartoon GROUP BY Directed_by",
+          "execution_accuracy": 0.0,
+          "exact_match": 0.0,
+          "verification": {
+            "safe_to_execute": false,
+            "status": "UNSAFE",
+            "repaired_sql": "SELECT \"director\", COUNT(*) AS \"number_of_cartoons\"\nFROM cartoon\nGROUP BY \"director\"",
+            "errors": [
+              "Column '*' not found in schema. Available columns: []...",
+              "Column '\"director\"' not found in schema. Available columns: []...",
+              "Column 'AS \"number_of_cartoons\"' not found in schema. Available columns: []..."
+            ],
+            "warnings": [],
+            "validation_results": {
+              "schema": {
+                "valid": false,
+                "errors": [
+                  "Column '\"director\"' not found in schema. Available columns: []...",
+                  "Column 'AS \"number_of_cartoons\"' not found in schema. Available columns: []...",
+                  "Column '*' not found in schema. Available columns: []..."
+                ],
+                "warnings": [],
+                "details": {
+                  "tables_valid": true,
+                  "columns_valid": false,
+                  "types_valid": true,
+                  "operations_valid": true
+                },
+                "metadata": {
+                  "tables_found": [
+                    "CARTOON"
+                  ],
+                  "columns_found": [
+                    "\"director\"",
+                    "AS \"number_of_cartoons\"",
+                    "*"
+                  ],
+                  "operation_type": "SELECT"
+                }
+              },
+              "constraints": {
+                "valid": true,
+                "violations": [],
+                "warnings": [],
+                "details": {
+                  "operator_compatibility": true,
+                  "aggregation_correctness": true,
+                  "logical_constraints": true,
+                  "structure_valid": true
+                }
+              }
+            },
+            "repair_applied": false,
+            "fixes_applied": []
+          },
+          "status": "success"
+        }
+      ],
+      "metrics": {
+        "execution_accuracy": 0.5,
+        "exact_match": 0.0,
+        "safety_violations_prevented": 0,
+        "auto_repair_success": 10,
+        "total": 10,
+        "successful": 10,
+        "failed": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "timestamp": "20260302_221147",
+  "n_samples": 5,
+  "results": {
+    "wikisql_model2": {
+      "model": "Model 2 Baseline (LLaMA-3)",
+      "dataset": "wikisql",
+      "n_samples": 5,
+      "queries": [
+        {
+          "question": "What position does the player who played for butler cc (ks) play?",
+          "generated_sql": "SELECT col3 FROM table_1_10015132_11 WHERE col5 = 'Butler CC (KS)';",
+          "gold_sql": "SELECT col3 FROM table_1_10015132_11 WHERE col5 = 'Butler CC (KS)'",
+          "execution_accuracy": 1.0,
+          "exact_match": 1.0,
+          "status": "success"
+        },
+        {
+          "question": "How many schools did player number 3 play at?",
+          "generated_sql": "SELECT COUNT(col5) FROM table_1_10015132_11 WHERE col1 = '3'",
+          "gold_sql": "SELECT COUNT(col5) FROM table_1_10015132_11 WHERE col1 = '3'",
+          "execution_accuracy": 1.0,
+          "exact_match": 1.0,
+          "status": "success"
+        },
+        {
+          "question": "What school did player number 21 play for?",
+          "generated_sql": "SELECT col5 FROM table_1_10015132_11 WHERE col1 = '21'",
+          "gold_sql": "SELECT col5 FROM table_1_10015132_11 WHERE col1 = '21'",
+          "execution_accuracy": 1.0,
+          "exact_match": 1.0,
+          "status": "success"
+        },
+        {
+          "question": "Who is the player that wears number 42?",
+          "generated_sql": "SELECT col0 FROM table_1_10015132_11 WHERE col1 = '42'",
+          "gold_sql": "SELECT col0 FROM table_1_10015132_11 WHERE col1 = '42'",
+          "execution_accuracy": 1.0,
+          "exact_match": 1.0,
+          "status": "success"
+        },
+        {
+          "question": "What player played guard for toronto in 1996-97?",
+          "generated_sql": "SELECT col0 FROM table_1_10015132_11 WHERE col3 = 'guard' AND col4 = '1996-97'",
+          "gold_sql": "SELECT col0 FROM table_1_10015132_11 WHERE col3 = 'Guard' AND col4 = '1996-97'",
+          "execution_accuracy": 0.0,
+          "exact_match": 1.0,
+          "status": "success"
+        }
+      ],
+      "metrics": {
+        "execution_accuracy": 0.8,
+        "exact_match": 1.0,
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+      }
+    }
+  }
+}
